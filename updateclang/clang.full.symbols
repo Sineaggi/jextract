@@ -1415,6 +1415,7 @@
 --include-constant CXType_Accum
 --include-constant CXType_Attributed
 --include-constant CXType_Auto
+--include-constant CXType_BFloat16
 --include-constant CXType_BlockPointer
 --include-constant CXType_Bool
 --include-constant CXType_Char16

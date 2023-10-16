@@ -36,83 +36,39 @@ final class constants$16 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$16() {}
-    static final FunctionDescriptor clang_getTokenKind$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("kind"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("data")
+    ).withName("CXType"),
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(4, Constants$root.C_INT$LAYOUT).withName("int_data"),
-            Constants$root.C_POINTER$LAYOUT.withName("ptr_data")
-        )
+            JAVA_INT.withName("kind"),
+            MemoryLayout.paddingLayout(4),
+            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXType")
     );
-    static final MethodHandle clang_getTokenKind$MH = RuntimeHelper.downcallHandle(
-        "clang_getTokenKind",
-        constants$16.clang_getTokenKind$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_getCanonicalType",
+        constants$16.const$0
     );
-    static final FunctionDescriptor clang_getTokenSpelling$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("data"),
-        Constants$root.C_INT$LAYOUT.withName("private_flags"),
-        MemoryLayout.paddingLayout(4)
-    ),
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(4, Constants$root.C_INT$LAYOUT).withName("int_data"),
-            Constants$root.C_POINTER$LAYOUT.withName("ptr_data")
-        )
+            JAVA_INT.withName("kind"),
+            MemoryLayout.paddingLayout(4),
+            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXType")
     );
-    static final MethodHandle clang_getTokenSpelling$MH = RuntimeHelper.downcallHandle(
-        "clang_getTokenSpelling",
-        constants$16.clang_getTokenSpelling$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clang_isConstQualifiedType",
+        constants$16.const$2
     );
-    static final FunctionDescriptor clang_getTokenLocation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("ptr_data"),
-        Constants$root.C_INT$LAYOUT.withName("int_data"),
-        MemoryLayout.paddingLayout(4)
-    ),
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(4, Constants$root.C_INT$LAYOUT).withName("int_data"),
-            Constants$root.C_POINTER$LAYOUT.withName("ptr_data")
-        )
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "clang_Cursor_isMacroFunctionLike",
+        constants$10.const$4
     );
-    static final MethodHandle clang_getTokenLocation$MH = RuntimeHelper.downcallHandle(
-        "clang_getTokenLocation",
-        constants$16.clang_getTokenLocation$FUNC
-    );
-    static final FunctionDescriptor clang_getTokenExtent$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("ptr_data"),
-        Constants$root.C_INT$LAYOUT.withName("begin_int_data"),
-        Constants$root.C_INT$LAYOUT.withName("end_int_data")
-    ),
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(4, Constants$root.C_INT$LAYOUT).withName("int_data"),
-            Constants$root.C_POINTER$LAYOUT.withName("ptr_data")
-        )
-    );
-    static final MethodHandle clang_getTokenExtent$MH = RuntimeHelper.downcallHandle(
-        "clang_getTokenExtent",
-        constants$16.clang_getTokenExtent$FUNC
-    );
-    static final FunctionDescriptor clang_tokenize$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("ptr_data"),
-            Constants$root.C_INT$LAYOUT.withName("begin_int_data"),
-            Constants$root.C_INT$LAYOUT.withName("end_int_data")
-        ),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_tokenize$MH = RuntimeHelper.downcallHandle(
-        "clang_tokenize",
-        constants$16.clang_tokenize$FUNC
-    );
-    static final FunctionDescriptor clang_disposeTokens$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle clang_disposeTokens$MH = RuntimeHelper.downcallHandle(
-        "clang_disposeTokens",
-        constants$16.clang_disposeTokens$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "clang_Cursor_isFunctionInlined",
+        constants$10.const$4
     );
 }
 

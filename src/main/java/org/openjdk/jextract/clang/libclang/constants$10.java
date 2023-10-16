@@ -36,83 +36,43 @@ final class constants$10 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$10() {}
-    static final FunctionDescriptor clang_isVolatileQualifiedType$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("kind"),
+        JAVA_INT.withName("xdata"),
+        MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+    ).withName("CXCursor"),
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_getTranslationUnitCursor",
+        constants$10.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            MemoryLayout.paddingLayout(4),
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_isVolatileQualifiedType$MH = RuntimeHelper.downcallHandle(
-        "clang_isVolatileQualifiedType",
-        constants$10.clang_isVolatileQualifiedType$FUNC
-    );
-    static final FunctionDescriptor clang_getTypedefName$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("data"),
-        Constants$root.C_INT$LAYOUT.withName("private_flags"),
-        MemoryLayout.paddingLayout(4)
-    ),
+            JAVA_INT.withName("kind"),
+            JAVA_INT.withName("xdata"),
+            MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXCursor"),
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            MemoryLayout.paddingLayout(4),
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+            JAVA_INT.withName("kind"),
+            JAVA_INT.withName("xdata"),
+            MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXCursor")
     );
-    static final MethodHandle clang_getTypedefName$MH = RuntimeHelper.downcallHandle(
-        "clang_getTypedefName",
-        constants$10.clang_getTypedefName$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clang_equalCursors",
+        constants$10.const$2
     );
-    static final FunctionDescriptor clang_getPointeeType$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("kind"),
-        MemoryLayout.paddingLayout(4),
-        MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-    ),
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            MemoryLayout.paddingLayout(4),
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+            JAVA_INT.withName("kind"),
+            JAVA_INT.withName("xdata"),
+            MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXCursor")
     );
-    static final MethodHandle clang_getPointeeType$MH = RuntimeHelper.downcallHandle(
-        "clang_getPointeeType",
-        constants$10.clang_getPointeeType$FUNC
-    );
-    static final FunctionDescriptor clang_getTypeDeclaration$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("kind"),
-        Constants$root.C_INT$LAYOUT.withName("xdata"),
-        MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-    ),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            MemoryLayout.paddingLayout(4),
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_getTypeDeclaration$MH = RuntimeHelper.downcallHandle(
-        "clang_getTypeDeclaration",
-        constants$10.clang_getTypeDeclaration$FUNC
-    );
-    static final FunctionDescriptor clang_getTypeKindSpelling$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("data"),
-        Constants$root.C_INT$LAYOUT.withName("private_flags"),
-        MemoryLayout.paddingLayout(4)
-    ),
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle clang_getTypeKindSpelling$MH = RuntimeHelper.downcallHandle(
-        "clang_getTypeKindSpelling",
-        constants$10.clang_getTypeKindSpelling$FUNC
-    );
-    static final FunctionDescriptor clang_getFunctionTypeCallingConv$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            MemoryLayout.paddingLayout(4),
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_getFunctionTypeCallingConv$MH = RuntimeHelper.downcallHandle(
-        "clang_getFunctionTypeCallingConv",
-        constants$10.clang_getFunctionTypeCallingConv$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "clang_Cursor_isNull",
+        constants$10.const$4
     );
 }
 

@@ -36,70 +36,29 @@ final class constants$4 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$4() {}
-    static final FunctionDescriptor clang_getDiagnosticLocation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("ptr_data"),
-        Constants$root.C_INT$LAYOUT.withName("int_data"),
+    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_disposeDiagnostic",
+        constants$4.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("data"),
+        JAVA_INT.withName("private_flags"),
         MemoryLayout.paddingLayout(4)
-    ),
-        Constants$root.C_POINTER$LAYOUT
+    ).withName("CXString"),
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle clang_getDiagnosticLocation$MH = RuntimeHelper.downcallHandle(
-        "clang_getDiagnosticLocation",
-        constants$4.clang_getDiagnosticLocation$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clang_formatDiagnostic",
+        constants$4.const$2
     );
-    static final FunctionDescriptor clang_getDiagnosticSpelling$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("data"),
-        Constants$root.C_INT$LAYOUT.withName("private_flags"),
-        MemoryLayout.paddingLayout(4)
-    ),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_getDiagnosticSpelling$MH = RuntimeHelper.downcallHandle(
-        "clang_getDiagnosticSpelling",
-        constants$4.clang_getDiagnosticSpelling$FUNC
-    );
-    static final FunctionDescriptor clang_parseTranslationUnit$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle clang_parseTranslationUnit$MH = RuntimeHelper.downcallHandle(
-        "clang_parseTranslationUnit",
-        constants$4.clang_parseTranslationUnit$FUNC
-    );
-    static final FunctionDescriptor clang_parseTranslationUnit2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_parseTranslationUnit2$MH = RuntimeHelper.downcallHandle(
-        "clang_parseTranslationUnit2",
-        constants$4.clang_parseTranslationUnit2$FUNC
-    );
-    static final FunctionDescriptor clang_saveTranslationUnit$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle clang_saveTranslationUnit$MH = RuntimeHelper.downcallHandle(
-        "clang_saveTranslationUnit",
-        constants$4.clang_saveTranslationUnit$FUNC
-    );
-    static final FunctionDescriptor clang_disposeTranslationUnit$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_disposeTranslationUnit$MH = RuntimeHelper.downcallHandle(
-        "clang_disposeTranslationUnit",
-        constants$4.clang_disposeTranslationUnit$FUNC
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "clang_defaultDiagnosticDisplayOptions",
+        constants$4.const$4
     );
 }
 

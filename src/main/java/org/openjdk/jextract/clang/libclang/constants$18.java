@@ -36,47 +36,37 @@ final class constants$18 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$18() {}
-    static final FunctionDescriptor clang_EvalResult_getAsLongLong$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "clang_getFunctionTypeCallingConv",
+        constants$16.const$2
     );
-    static final MethodHandle clang_EvalResult_getAsLongLong$MH = RuntimeHelper.downcallHandle(
-        "clang_EvalResult_getAsLongLong",
-        constants$18.clang_EvalResult_getAsLongLong$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_getResultType",
+        constants$16.const$0
     );
-    static final FunctionDescriptor clang_EvalResult_isUnsignedInt$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "clang_getNumArgTypes",
+        constants$16.const$2
     );
-    static final MethodHandle clang_EvalResult_isUnsignedInt$MH = RuntimeHelper.downcallHandle(
-        "clang_EvalResult_isUnsignedInt",
-        constants$18.clang_EvalResult_isUnsignedInt$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("kind"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("data")
+    ).withName("CXType"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("kind"),
+            MemoryLayout.paddingLayout(4),
+            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXType"),
+        JAVA_INT
     );
-    static final FunctionDescriptor clang_EvalResult_getAsUnsigned$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "clang_getArgType",
+        constants$18.const$3
     );
-    static final MethodHandle clang_EvalResult_getAsUnsigned$MH = RuntimeHelper.downcallHandle(
-        "clang_EvalResult_getAsUnsigned",
-        constants$18.clang_EvalResult_getAsUnsigned$FUNC
-    );
-    static final FunctionDescriptor clang_EvalResult_getAsDouble$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_EvalResult_getAsDouble$MH = RuntimeHelper.downcallHandle(
-        "clang_EvalResult_getAsDouble",
-        constants$18.clang_EvalResult_getAsDouble$FUNC
-    );
-    static final FunctionDescriptor clang_EvalResult_getAsStr$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_EvalResult_getAsStr$MH = RuntimeHelper.downcallHandle(
-        "clang_EvalResult_getAsStr",
-        constants$18.clang_EvalResult_getAsStr$FUNC
-    );
-    static final FunctionDescriptor clang_EvalResult_dispose$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_EvalResult_dispose$MH = RuntimeHelper.downcallHandle(
-        "clang_EvalResult_dispose",
-        constants$18.clang_EvalResult_dispose$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "clang_isFunctionTypeVariadic",
+        constants$16.const$2
     );
 }
 

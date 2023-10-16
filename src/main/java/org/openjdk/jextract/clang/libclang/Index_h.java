@@ -34,14 +34,14 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 public class Index_h  {
 
-    public static final OfByte C_CHAR = Constants$root.C_CHAR$LAYOUT;
-    public static final OfShort C_SHORT = Constants$root.C_SHORT$LAYOUT;
-    public static final OfInt C_INT = Constants$root.C_INT$LAYOUT;
-    public static final OfLong C_LONG = Constants$root.C_LONG_LONG$LAYOUT;
-    public static final OfLong C_LONG_LONG = Constants$root.C_LONG_LONG$LAYOUT;
-    public static final OfFloat C_FLOAT = Constants$root.C_FLOAT$LAYOUT;
-    public static final OfDouble C_DOUBLE = Constants$root.C_DOUBLE$LAYOUT;
-    public static final AddressLayout C_POINTER = Constants$root.C_POINTER$LAYOUT;
+    public static final OfByte C_CHAR = JAVA_BYTE;
+    public static final OfShort C_SHORT = JAVA_SHORT;
+    public static final OfInt C_INT = JAVA_INT;
+    public static final OfLong C_LONG = JAVA_LONG;
+    public static final OfLong C_LONG_LONG = JAVA_LONG;
+    public static final OfFloat C_FLOAT = JAVA_FLOAT;
+    public static final OfDouble C_DOUBLE = JAVA_DOUBLE;
+    public static final AddressLayout C_POINTER = RuntimeHelper.POINTER;
     /**
      * {@snippet :
      * enum CXErrorCode.CXError_Success = 0;
@@ -83,11 +83,11 @@ public class Index_h  {
         return (int)4L;
     }
     public static MethodHandle clang_getCString$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.clang_getCString$MH,"clang_getCString");
+        return RuntimeHelper.requireNonNull(constants$0.const$1,"clang_getCString");
     }
     /**
      * {@snippet :
-     * char* clang_getCString(CXString string);
+     * char* clang_getCString(struct CXString string);
      * }
      */
     public static MemorySegment clang_getCString(MemorySegment string) {
@@ -99,11 +99,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_disposeString$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.clang_disposeString$MH,"clang_disposeString");
+        return RuntimeHelper.requireNonNull(constants$0.const$3,"clang_disposeString");
     }
     /**
      * {@snippet :
-     * void clang_disposeString(CXString string);
+     * void clang_disposeString(struct CXString string);
      * }
      */
     public static void clang_disposeString(MemorySegment string) {
@@ -114,18 +114,394 @@ public class Index_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle clang_getFileName$MH() {
+        return RuntimeHelper.requireNonNull(constants$0.const$5,"clang_getFileName");
+    }
+    /**
+     * {@snippet :
+     * struct CXString clang_getFileName(void* SFile);
+     * }
+     */
+    public static MemorySegment clang_getFileName(SegmentAllocator allocator, MemorySegment SFile) {
+        var mh$ = clang_getFileName$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, SFile);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_getNullLocation$MH() {
+        return RuntimeHelper.requireNonNull(constants$1.const$1,"clang_getNullLocation");
+    }
+    /**
+     * {@snippet :
+     * struct CXSourceLocation clang_getNullLocation();
+     * }
+     */
+    public static MemorySegment clang_getNullLocation(SegmentAllocator allocator) {
+        var mh$ = clang_getNullLocation$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_equalLocations$MH() {
+        return RuntimeHelper.requireNonNull(constants$1.const$3,"clang_equalLocations");
+    }
+    /**
+     * {@snippet :
+     * unsigned int clang_equalLocations(struct CXSourceLocation loc1, struct CXSourceLocation loc2);
+     * }
+     */
+    public static int clang_equalLocations(MemorySegment loc1, MemorySegment loc2) {
+        var mh$ = clang_equalLocations$MH();
+        try {
+            return (int)mh$.invokeExact(loc1, loc2);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_Location_isInSystemHeader$MH() {
+        return RuntimeHelper.requireNonNull(constants$1.const$5,"clang_Location_isInSystemHeader");
+    }
+    /**
+     * {@snippet :
+     * int clang_Location_isInSystemHeader(struct CXSourceLocation location);
+     * }
+     */
+    public static int clang_Location_isInSystemHeader(MemorySegment location) {
+        var mh$ = clang_Location_isInSystemHeader$MH();
+        try {
+            return (int)mh$.invokeExact(location);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_Location_isFromMainFile$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.const$0,"clang_Location_isFromMainFile");
+    }
+    /**
+     * {@snippet :
+     * int clang_Location_isFromMainFile(struct CXSourceLocation location);
+     * }
+     */
+    public static int clang_Location_isFromMainFile(MemorySegment location) {
+        var mh$ = clang_Location_isFromMainFile$MH();
+        try {
+            return (int)mh$.invokeExact(location);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_Range_isNull$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.const$2,"clang_Range_isNull");
+    }
+    /**
+     * {@snippet :
+     * int clang_Range_isNull(struct CXSourceRange range);
+     * }
+     */
+    public static int clang_Range_isNull(MemorySegment range) {
+        var mh$ = clang_Range_isNull$MH();
+        try {
+            return (int)mh$.invokeExact(range);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_getExpansionLocation$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.const$4,"clang_getExpansionLocation");
+    }
+    /**
+     * {@snippet :
+     * void clang_getExpansionLocation(struct CXSourceLocation location, void** file, unsigned int* line, unsigned int* column, unsigned int* offset);
+     * }
+     */
+    public static void clang_getExpansionLocation(MemorySegment location, MemorySegment file, MemorySegment line, MemorySegment column, MemorySegment offset) {
+        var mh$ = clang_getExpansionLocation$MH();
+        try {
+            mh$.invokeExact(location, file, line, column, offset);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_getSpellingLocation$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.const$5,"clang_getSpellingLocation");
+    }
+    /**
+     * {@snippet :
+     * void clang_getSpellingLocation(struct CXSourceLocation location, void** file, unsigned int* line, unsigned int* column, unsigned int* offset);
+     * }
+     */
+    public static void clang_getSpellingLocation(MemorySegment location, MemorySegment file, MemorySegment line, MemorySegment column, MemorySegment offset) {
+        var mh$ = clang_getSpellingLocation$MH();
+        try {
+            mh$.invokeExact(location, file, line, column, offset);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_getFileLocation$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.const$0,"clang_getFileLocation");
+    }
+    /**
+     * {@snippet :
+     * void clang_getFileLocation(struct CXSourceLocation location, void** file, unsigned int* line, unsigned int* column, unsigned int* offset);
+     * }
+     */
+    public static void clang_getFileLocation(MemorySegment location, MemorySegment file, MemorySegment line, MemorySegment column, MemorySegment offset) {
+        var mh$ = clang_getFileLocation$MH();
+        try {
+            mh$.invokeExact(location, file, line, column, offset);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_getRangeStart$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.const$2,"clang_getRangeStart");
+    }
+    /**
+     * {@snippet :
+     * struct CXSourceLocation clang_getRangeStart(struct CXSourceRange range);
+     * }
+     */
+    public static MemorySegment clang_getRangeStart(SegmentAllocator allocator, MemorySegment range) {
+        var mh$ = clang_getRangeStart$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, range);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_getRangeEnd$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.const$3,"clang_getRangeEnd");
+    }
+    /**
+     * {@snippet :
+     * struct CXSourceLocation clang_getRangeEnd(struct CXSourceRange range);
+     * }
+     */
+    public static MemorySegment clang_getRangeEnd(SegmentAllocator allocator, MemorySegment range) {
+        var mh$ = clang_getRangeEnd$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, range);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    /**
+     * {@snippet :
+     * enum CXDiagnosticSeverity.CXDiagnostic_Ignored = 0;
+     * }
+     */
+    public static int CXDiagnostic_Ignored() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * enum CXDiagnosticSeverity.CXDiagnostic_Note = 1;
+     * }
+     */
+    public static int CXDiagnostic_Note() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * enum CXDiagnosticSeverity.CXDiagnostic_Warning = 2;
+     * }
+     */
+    public static int CXDiagnostic_Warning() {
+        return (int)2L;
+    }
+    /**
+     * {@snippet :
+     * enum CXDiagnosticSeverity.CXDiagnostic_Error = 3;
+     * }
+     */
+    public static int CXDiagnostic_Error() {
+        return (int)3L;
+    }
+    /**
+     * {@snippet :
+     * enum CXDiagnosticSeverity.CXDiagnostic_Fatal = 4;
+     * }
+     */
+    public static int CXDiagnostic_Fatal() {
+        return (int)4L;
+    }
+    public static MethodHandle clang_getChildDiagnostics$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.const$5,"clang_getChildDiagnostics");
+    }
+    /**
+     * {@snippet :
+     * void* clang_getChildDiagnostics(void* D);
+     * }
+     */
+    public static MemorySegment clang_getChildDiagnostics(MemorySegment D) {
+        var mh$ = clang_getChildDiagnostics$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(D);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_disposeDiagnostic$MH() {
+        return RuntimeHelper.requireNonNull(constants$4.const$1,"clang_disposeDiagnostic");
+    }
+    /**
+     * {@snippet :
+     * void clang_disposeDiagnostic(void* Diagnostic);
+     * }
+     */
+    public static void clang_disposeDiagnostic(MemorySegment Diagnostic) {
+        var mh$ = clang_disposeDiagnostic$MH();
+        try {
+            mh$.invokeExact(Diagnostic);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    /**
+     * {@snippet :
+     * enum CXDiagnosticDisplayOptions.CXDiagnostic_DisplaySourceLocation = 1;
+     * }
+     */
+    public static int CXDiagnostic_DisplaySourceLocation() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * enum CXDiagnosticDisplayOptions.CXDiagnostic_DisplayColumn = 2;
+     * }
+     */
+    public static int CXDiagnostic_DisplayColumn() {
+        return (int)2L;
+    }
+    /**
+     * {@snippet :
+     * enum CXDiagnosticDisplayOptions.CXDiagnostic_DisplaySourceRanges = 4;
+     * }
+     */
+    public static int CXDiagnostic_DisplaySourceRanges() {
+        return (int)4L;
+    }
+    /**
+     * {@snippet :
+     * enum CXDiagnosticDisplayOptions.CXDiagnostic_DisplayOption = 8;
+     * }
+     */
+    public static int CXDiagnostic_DisplayOption() {
+        return (int)8L;
+    }
+    /**
+     * {@snippet :
+     * enum CXDiagnosticDisplayOptions.CXDiagnostic_DisplayCategoryId = 16;
+     * }
+     */
+    public static int CXDiagnostic_DisplayCategoryId() {
+        return (int)16L;
+    }
+    /**
+     * {@snippet :
+     * enum CXDiagnosticDisplayOptions.CXDiagnostic_DisplayCategoryName = 32;
+     * }
+     */
+    public static int CXDiagnostic_DisplayCategoryName() {
+        return (int)32L;
+    }
+    public static MethodHandle clang_formatDiagnostic$MH() {
+        return RuntimeHelper.requireNonNull(constants$4.const$3,"clang_formatDiagnostic");
+    }
+    /**
+     * {@snippet :
+     * struct CXString clang_formatDiagnostic(void* Diagnostic, unsigned int Options);
+     * }
+     */
+    public static MemorySegment clang_formatDiagnostic(SegmentAllocator allocator, MemorySegment Diagnostic, int Options) {
+        var mh$ = clang_formatDiagnostic$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, Diagnostic, Options);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_defaultDiagnosticDisplayOptions$MH() {
+        return RuntimeHelper.requireNonNull(constants$4.const$5,"clang_defaultDiagnosticDisplayOptions");
+    }
+    /**
+     * {@snippet :
+     * unsigned int clang_defaultDiagnosticDisplayOptions();
+     * }
+     */
+    public static int clang_defaultDiagnosticDisplayOptions() {
+        var mh$ = clang_defaultDiagnosticDisplayOptions$MH();
+        try {
+            return (int)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_getDiagnosticSeverity$MH() {
+        return RuntimeHelper.requireNonNull(constants$5.const$1,"clang_getDiagnosticSeverity");
+    }
+    /**
+     * {@snippet :
+     * enum CXDiagnosticSeverity clang_getDiagnosticSeverity(void*);
+     * }
+     */
+    public static int clang_getDiagnosticSeverity(MemorySegment x0) {
+        var mh$ = clang_getDiagnosticSeverity$MH();
+        try {
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_getDiagnosticLocation$MH() {
+        return RuntimeHelper.requireNonNull(constants$5.const$3,"clang_getDiagnosticLocation");
+    }
+    /**
+     * {@snippet :
+     * struct CXSourceLocation clang_getDiagnosticLocation(void*);
+     * }
+     */
+    public static MemorySegment clang_getDiagnosticLocation(SegmentAllocator allocator, MemorySegment x1) {
+        var mh$ = clang_getDiagnosticLocation$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, x1);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_getDiagnosticSpelling$MH() {
+        return RuntimeHelper.requireNonNull(constants$5.const$4,"clang_getDiagnosticSpelling");
+    }
+    /**
+     * {@snippet :
+     * struct CXString clang_getDiagnosticSpelling(void*);
+     * }
+     */
+    public static MemorySegment clang_getDiagnosticSpelling(SegmentAllocator allocator, MemorySegment x1) {
+        var mh$ = clang_getDiagnosticSpelling$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, x1);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     /**
      * {@snippet :
      * typedef void* CXIndex;
      * }
      */
-    public static final AddressLayout CXIndex = Constants$root.C_POINTER$LAYOUT;
+    public static final AddressLayout CXIndex = RuntimeHelper.POINTER;
     /**
      * {@snippet :
      * typedef struct CXTranslationUnitImpl* CXTranslationUnit;
      * }
      */
-    public static final AddressLayout CXTranslationUnit = Constants$root.C_POINTER$LAYOUT;
+    public static final AddressLayout CXTranslationUnit = RuntimeHelper.POINTER;
     /**
      * {@snippet :
      * enum CXCursor_ExceptionSpecificationKind.CXCursor_ExceptionSpecificationKind_None = 0;
@@ -207,11 +583,11 @@ public class Index_h  {
         return (int)9L;
     }
     public static MethodHandle clang_createIndex$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.clang_createIndex$MH,"clang_createIndex");
+        return RuntimeHelper.requireNonNull(constants$6.const$4,"clang_createIndex");
     }
     /**
      * {@snippet :
-     * CXIndex clang_createIndex(int excludeDeclarationsFromPCH, int displayDiagnostics);
+     * void* clang_createIndex(int excludeDeclarationsFromPCH, int displayDiagnostics);
      * }
      */
     public static MemorySegment clang_createIndex(int excludeDeclarationsFromPCH, int displayDiagnostics) {
@@ -223,11 +599,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_disposeIndex$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.clang_disposeIndex$MH,"clang_disposeIndex");
+        return RuntimeHelper.requireNonNull(constants$6.const$5,"clang_disposeIndex");
     }
     /**
      * {@snippet :
-     * void clang_disposeIndex(CXIndex index);
+     * void clang_disposeIndex(void* index);
      * }
      */
     public static void clang_disposeIndex(MemorySegment index) {
@@ -238,60 +614,12 @@ public class Index_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle clang_getFileName$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.clang_getFileName$MH,"clang_getFileName");
-    }
-    /**
-     * {@snippet :
-     * CXString clang_getFileName(CXFile SFile);
-     * }
-     */
-    public static MemorySegment clang_getFileName(SegmentAllocator allocator, MemorySegment SFile) {
-        var mh$ = clang_getFileName$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, SFile);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_getNullLocation$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.clang_getNullLocation$MH,"clang_getNullLocation");
-    }
-    /**
-     * {@snippet :
-     * CXSourceLocation clang_getNullLocation();
-     * }
-     */
-    public static MemorySegment clang_getNullLocation(SegmentAllocator allocator) {
-        var mh$ = clang_getNullLocation$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_equalLocations$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.clang_equalLocations$MH,"clang_equalLocations");
-    }
-    /**
-     * {@snippet :
-     * unsigned int clang_equalLocations(CXSourceLocation loc1, CXSourceLocation loc2);
-     * }
-     */
-    public static int clang_equalLocations(MemorySegment loc1, MemorySegment loc2) {
-        var mh$ = clang_equalLocations$MH();
-        try {
-            return (int)mh$.invokeExact(loc1, loc2);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
     public static MethodHandle clang_getLocation$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.clang_getLocation$MH,"clang_getLocation");
+        return RuntimeHelper.requireNonNull(constants$7.const$1,"clang_getLocation");
     }
     /**
      * {@snippet :
-     * CXSourceLocation clang_getLocation(CXTranslationUnit tu, CXFile file, unsigned int line, unsigned int column);
+     * struct CXSourceLocation clang_getLocation(struct CXTranslationUnitImpl* tu, void* file, unsigned int line, unsigned int column);
      * }
      */
     public static MemorySegment clang_getLocation(SegmentAllocator allocator, MemorySegment tu, MemorySegment file, int line, int column) {
@@ -303,11 +631,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getLocationForOffset$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.clang_getLocationForOffset$MH,"clang_getLocationForOffset");
+        return RuntimeHelper.requireNonNull(constants$7.const$3,"clang_getLocationForOffset");
     }
     /**
      * {@snippet :
-     * CXSourceLocation clang_getLocationForOffset(CXTranslationUnit tu, CXFile file, unsigned int offset);
+     * struct CXSourceLocation clang_getLocationForOffset(struct CXTranslationUnitImpl* tu, void* file, unsigned int offset);
      * }
      */
     public static MemorySegment clang_getLocationForOffset(SegmentAllocator allocator, MemorySegment tu, MemorySegment file, int offset) {
@@ -318,196 +646,12 @@ public class Index_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle clang_Location_isInSystemHeader$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.clang_Location_isInSystemHeader$MH,"clang_Location_isInSystemHeader");
-    }
-    /**
-     * {@snippet :
-     * int clang_Location_isInSystemHeader(CXSourceLocation location);
-     * }
-     */
-    public static int clang_Location_isInSystemHeader(MemorySegment location) {
-        var mh$ = clang_Location_isInSystemHeader$MH();
-        try {
-            return (int)mh$.invokeExact(location);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_Location_isFromMainFile$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.clang_Location_isFromMainFile$MH,"clang_Location_isFromMainFile");
-    }
-    /**
-     * {@snippet :
-     * int clang_Location_isFromMainFile(CXSourceLocation location);
-     * }
-     */
-    public static int clang_Location_isFromMainFile(MemorySegment location) {
-        var mh$ = clang_Location_isFromMainFile$MH();
-        try {
-            return (int)mh$.invokeExact(location);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_Range_isNull$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.clang_Range_isNull$MH,"clang_Range_isNull");
-    }
-    /**
-     * {@snippet :
-     * int clang_Range_isNull(CXSourceRange range);
-     * }
-     */
-    public static int clang_Range_isNull(MemorySegment range) {
-        var mh$ = clang_Range_isNull$MH();
-        try {
-            return (int)mh$.invokeExact(range);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_getExpansionLocation$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.clang_getExpansionLocation$MH,"clang_getExpansionLocation");
-    }
-    /**
-     * {@snippet :
-     * void clang_getExpansionLocation(CXSourceLocation location, CXFile* file, unsigned int* line, unsigned int* column, unsigned int* offset);
-     * }
-     */
-    public static void clang_getExpansionLocation(MemorySegment location, MemorySegment file, MemorySegment line, MemorySegment column, MemorySegment offset) {
-        var mh$ = clang_getExpansionLocation$MH();
-        try {
-            mh$.invokeExact(location, file, line, column, offset);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_getSpellingLocation$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.clang_getSpellingLocation$MH,"clang_getSpellingLocation");
-    }
-    /**
-     * {@snippet :
-     * void clang_getSpellingLocation(CXSourceLocation location, CXFile* file, unsigned int* line, unsigned int* column, unsigned int* offset);
-     * }
-     */
-    public static void clang_getSpellingLocation(MemorySegment location, MemorySegment file, MemorySegment line, MemorySegment column, MemorySegment offset) {
-        var mh$ = clang_getSpellingLocation$MH();
-        try {
-            mh$.invokeExact(location, file, line, column, offset);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_getFileLocation$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.clang_getFileLocation$MH,"clang_getFileLocation");
-    }
-    /**
-     * {@snippet :
-     * void clang_getFileLocation(CXSourceLocation location, CXFile* file, unsigned int* line, unsigned int* column, unsigned int* offset);
-     * }
-     */
-    public static void clang_getFileLocation(MemorySegment location, MemorySegment file, MemorySegment line, MemorySegment column, MemorySegment offset) {
-        var mh$ = clang_getFileLocation$MH();
-        try {
-            mh$.invokeExact(location, file, line, column, offset);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_getRangeStart$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.clang_getRangeStart$MH,"clang_getRangeStart");
-    }
-    /**
-     * {@snippet :
-     * CXSourceLocation clang_getRangeStart(CXSourceRange range);
-     * }
-     */
-    public static MemorySegment clang_getRangeStart(SegmentAllocator allocator, MemorySegment range) {
-        var mh$ = clang_getRangeStart$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, range);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_getRangeEnd$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.clang_getRangeEnd$MH,"clang_getRangeEnd");
-    }
-    /**
-     * {@snippet :
-     * CXSourceLocation clang_getRangeEnd(CXSourceRange range);
-     * }
-     */
-    public static MemorySegment clang_getRangeEnd(SegmentAllocator allocator, MemorySegment range) {
-        var mh$ = clang_getRangeEnd$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, range);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    /**
-     * {@snippet :
-     * enum CXDiagnosticSeverity.CXDiagnostic_Ignored = 0;
-     * }
-     */
-    public static int CXDiagnostic_Ignored() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * enum CXDiagnosticSeverity.CXDiagnostic_Note = 1;
-     * }
-     */
-    public static int CXDiagnostic_Note() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * enum CXDiagnosticSeverity.CXDiagnostic_Warning = 2;
-     * }
-     */
-    public static int CXDiagnostic_Warning() {
-        return (int)2L;
-    }
-    /**
-     * {@snippet :
-     * enum CXDiagnosticSeverity.CXDiagnostic_Error = 3;
-     * }
-     */
-    public static int CXDiagnostic_Error() {
-        return (int)3L;
-    }
-    /**
-     * {@snippet :
-     * enum CXDiagnosticSeverity.CXDiagnostic_Fatal = 4;
-     * }
-     */
-    public static int CXDiagnostic_Fatal() {
-        return (int)4L;
-    }
-    public static MethodHandle clang_getChildDiagnostics$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.clang_getChildDiagnostics$MH,"clang_getChildDiagnostics");
-    }
-    /**
-     * {@snippet :
-     * CXDiagnosticSet clang_getChildDiagnostics(CXDiagnostic D);
-     * }
-     */
-    public static MemorySegment clang_getChildDiagnostics(MemorySegment D) {
-        var mh$ = clang_getChildDiagnostics$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(D);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
     public static MethodHandle clang_getNumDiagnostics$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.clang_getNumDiagnostics$MH,"clang_getNumDiagnostics");
+        return RuntimeHelper.requireNonNull(constants$7.const$4,"clang_getNumDiagnostics");
     }
     /**
      * {@snippet :
-     * unsigned int clang_getNumDiagnostics(CXTranslationUnit Unit);
+     * unsigned int clang_getNumDiagnostics(struct CXTranslationUnitImpl* Unit);
      * }
      */
     public static int clang_getNumDiagnostics(MemorySegment Unit) {
@@ -519,161 +663,17 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getDiagnostic$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.clang_getDiagnostic$MH,"clang_getDiagnostic");
+        return RuntimeHelper.requireNonNull(constants$7.const$6,"clang_getDiagnostic");
     }
     /**
      * {@snippet :
-     * CXDiagnostic clang_getDiagnostic(CXTranslationUnit Unit, unsigned int Index);
+     * void* clang_getDiagnostic(struct CXTranslationUnitImpl* Unit, unsigned int Index);
      * }
      */
     public static MemorySegment clang_getDiagnostic(MemorySegment Unit, int Index) {
         var mh$ = clang_getDiagnostic$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(Unit, Index);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_disposeDiagnostic$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.clang_disposeDiagnostic$MH,"clang_disposeDiagnostic");
-    }
-    /**
-     * {@snippet :
-     * void clang_disposeDiagnostic(CXDiagnostic Diagnostic);
-     * }
-     */
-    public static void clang_disposeDiagnostic(MemorySegment Diagnostic) {
-        var mh$ = clang_disposeDiagnostic$MH();
-        try {
-            mh$.invokeExact(Diagnostic);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    /**
-     * {@snippet :
-     * enum CXDiagnosticDisplayOptions.CXDiagnostic_DisplaySourceLocation = 1;
-     * }
-     */
-    public static int CXDiagnostic_DisplaySourceLocation() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * enum CXDiagnosticDisplayOptions.CXDiagnostic_DisplayColumn = 2;
-     * }
-     */
-    public static int CXDiagnostic_DisplayColumn() {
-        return (int)2L;
-    }
-    /**
-     * {@snippet :
-     * enum CXDiagnosticDisplayOptions.CXDiagnostic_DisplaySourceRanges = 4;
-     * }
-     */
-    public static int CXDiagnostic_DisplaySourceRanges() {
-        return (int)4L;
-    }
-    /**
-     * {@snippet :
-     * enum CXDiagnosticDisplayOptions.CXDiagnostic_DisplayOption = 8;
-     * }
-     */
-    public static int CXDiagnostic_DisplayOption() {
-        return (int)8L;
-    }
-    /**
-     * {@snippet :
-     * enum CXDiagnosticDisplayOptions.CXDiagnostic_DisplayCategoryId = 16;
-     * }
-     */
-    public static int CXDiagnostic_DisplayCategoryId() {
-        return (int)16L;
-    }
-    /**
-     * {@snippet :
-     * enum CXDiagnosticDisplayOptions.CXDiagnostic_DisplayCategoryName = 32;
-     * }
-     */
-    public static int CXDiagnostic_DisplayCategoryName() {
-        return (int)32L;
-    }
-    public static MethodHandle clang_formatDiagnostic$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.clang_formatDiagnostic$MH,"clang_formatDiagnostic");
-    }
-    /**
-     * {@snippet :
-     * CXString clang_formatDiagnostic(CXDiagnostic Diagnostic, unsigned int Options);
-     * }
-     */
-    public static MemorySegment clang_formatDiagnostic(SegmentAllocator allocator, MemorySegment Diagnostic, int Options) {
-        var mh$ = clang_formatDiagnostic$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, Diagnostic, Options);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_defaultDiagnosticDisplayOptions$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.clang_defaultDiagnosticDisplayOptions$MH,"clang_defaultDiagnosticDisplayOptions");
-    }
-    /**
-     * {@snippet :
-     * unsigned int clang_defaultDiagnosticDisplayOptions();
-     * }
-     */
-    public static int clang_defaultDiagnosticDisplayOptions() {
-        var mh$ = clang_defaultDiagnosticDisplayOptions$MH();
-        try {
-            return (int)mh$.invokeExact();
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_getDiagnosticSeverity$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.clang_getDiagnosticSeverity$MH,"clang_getDiagnosticSeverity");
-    }
-    /**
-     * {@snippet :
-     * enum CXDiagnosticSeverity clang_getDiagnosticSeverity(CXDiagnostic);
-     * }
-     */
-    public static int clang_getDiagnosticSeverity(MemorySegment x0) {
-        var mh$ = clang_getDiagnosticSeverity$MH();
-        try {
-            return (int)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_getDiagnosticLocation$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.clang_getDiagnosticLocation$MH,"clang_getDiagnosticLocation");
-    }
-    /**
-     * {@snippet :
-     * CXSourceLocation clang_getDiagnosticLocation(CXDiagnostic);
-     * }
-     */
-    public static MemorySegment clang_getDiagnosticLocation(SegmentAllocator allocator, MemorySegment x1) {
-        var mh$ = clang_getDiagnosticLocation$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, x1);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_getDiagnosticSpelling$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.clang_getDiagnosticSpelling$MH,"clang_getDiagnosticSpelling");
-    }
-    /**
-     * {@snippet :
-     * CXString clang_getDiagnosticSpelling(CXDiagnostic);
-     * }
-     */
-    public static MemorySegment clang_getDiagnosticSpelling(SegmentAllocator allocator, MemorySegment x1) {
-        var mh$ = clang_getDiagnosticSpelling$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, x1);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -815,11 +815,11 @@ public class Index_h  {
         return (int)32768L;
     }
     public static MethodHandle clang_parseTranslationUnit$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.clang_parseTranslationUnit$MH,"clang_parseTranslationUnit");
+        return RuntimeHelper.requireNonNull(constants$8.const$1,"clang_parseTranslationUnit");
     }
     /**
      * {@snippet :
-     * CXTranslationUnit clang_parseTranslationUnit(CXIndex CIdx, char* source_filename, char** command_line_args, int num_command_line_args, struct CXUnsavedFile* unsaved_files, unsigned int num_unsaved_files, unsigned int options);
+     * struct CXTranslationUnitImpl* clang_parseTranslationUnit(void* CIdx, char* source_filename, char** command_line_args, int num_command_line_args, struct CXUnsavedFile* unsaved_files, unsigned int num_unsaved_files, unsigned int options);
      * }
      */
     public static MemorySegment clang_parseTranslationUnit(MemorySegment CIdx, MemorySegment source_filename, MemorySegment command_line_args, int num_command_line_args, MemorySegment unsaved_files, int num_unsaved_files, int options) {
@@ -831,11 +831,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_parseTranslationUnit2$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.clang_parseTranslationUnit2$MH,"clang_parseTranslationUnit2");
+        return RuntimeHelper.requireNonNull(constants$8.const$3,"clang_parseTranslationUnit2");
     }
     /**
      * {@snippet :
-     * enum CXErrorCode clang_parseTranslationUnit2(CXIndex CIdx, char* source_filename, char** command_line_args, int num_command_line_args, struct CXUnsavedFile* unsaved_files, unsigned int num_unsaved_files, unsigned int options, CXTranslationUnit* out_TU);
+     * enum CXErrorCode clang_parseTranslationUnit2(void* CIdx, char* source_filename, char** command_line_args, int num_command_line_args, struct CXUnsavedFile* unsaved_files, unsigned int num_unsaved_files, unsigned int options, struct CXTranslationUnitImpl** out_TU);
      * }
      */
     public static int clang_parseTranslationUnit2(MemorySegment CIdx, MemorySegment source_filename, MemorySegment command_line_args, int num_command_line_args, MemorySegment unsaved_files, int num_unsaved_files, int options, MemorySegment out_TU) {
@@ -887,11 +887,11 @@ public class Index_h  {
         return (int)3L;
     }
     public static MethodHandle clang_saveTranslationUnit$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.clang_saveTranslationUnit$MH,"clang_saveTranslationUnit");
+        return RuntimeHelper.requireNonNull(constants$8.const$5,"clang_saveTranslationUnit");
     }
     /**
      * {@snippet :
-     * int clang_saveTranslationUnit(CXTranslationUnit TU, char* FileName, unsigned int options);
+     * int clang_saveTranslationUnit(struct CXTranslationUnitImpl* TU, char* FileName, unsigned int options);
      * }
      */
     public static int clang_saveTranslationUnit(MemorySegment TU, MemorySegment FileName, int options) {
@@ -903,11 +903,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_disposeTranslationUnit$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.clang_disposeTranslationUnit$MH,"clang_disposeTranslationUnit");
+        return RuntimeHelper.requireNonNull(constants$9.const$0,"clang_disposeTranslationUnit");
     }
     /**
      * {@snippet :
-     * void clang_disposeTranslationUnit(CXTranslationUnit);
+     * void clang_disposeTranslationUnit(struct CXTranslationUnitImpl*);
      * }
      */
     public static void clang_disposeTranslationUnit(MemorySegment x0) {
@@ -927,11 +927,11 @@ public class Index_h  {
         return (int)0L;
     }
     public static MethodHandle clang_defaultReparseOptions$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.clang_defaultReparseOptions$MH,"clang_defaultReparseOptions");
+        return RuntimeHelper.requireNonNull(constants$9.const$1,"clang_defaultReparseOptions");
     }
     /**
      * {@snippet :
-     * unsigned int clang_defaultReparseOptions(CXTranslationUnit TU);
+     * unsigned int clang_defaultReparseOptions(struct CXTranslationUnitImpl* TU);
      * }
      */
     public static int clang_defaultReparseOptions(MemorySegment TU) {
@@ -943,11 +943,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_reparseTranslationUnit$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.clang_reparseTranslationUnit$MH,"clang_reparseTranslationUnit");
+        return RuntimeHelper.requireNonNull(constants$9.const$3,"clang_reparseTranslationUnit");
     }
     /**
      * {@snippet :
-     * int clang_reparseTranslationUnit(CXTranslationUnit TU, unsigned int num_unsaved_files, struct CXUnsavedFile* unsaved_files, unsigned int options);
+     * int clang_reparseTranslationUnit(struct CXTranslationUnitImpl* TU, unsigned int num_unsaved_files, struct CXUnsavedFile* unsaved_files, unsigned int options);
      * }
      */
     public static int clang_reparseTranslationUnit(MemorySegment TU, int num_unsaved_files, MemorySegment unsaved_files, int options) {
@@ -1848,11 +1848,11 @@ public class Index_h  {
     }
     /**
      * {@snippet :
-     * enum CXCursorKind.CXCursor_LastExpr = 152;
+     * enum CXCursorKind.CXCursor_LastExpr = 155;
      * }
      */
     public static int CXCursor_LastExpr() {
-        return (int)152L;
+        return (int)155L;
     }
     /**
      * {@snippet :
@@ -2552,19 +2552,19 @@ public class Index_h  {
     }
     /**
      * {@snippet :
-     * enum CXCursorKind.CXCursor_LastStmt = 293;
+     * enum CXCursorKind.CXCursor_LastStmt = 305;
      * }
      */
     public static int CXCursor_LastStmt() {
-        return (int)293L;
+        return (int)305L;
     }
     /**
      * {@snippet :
-     * enum CXCursorKind.CXCursor_TranslationUnit = 300;
+     * enum CXCursorKind.CXCursor_TranslationUnit = 350;
      * }
      */
     public static int CXCursor_TranslationUnit() {
-        return (int)300L;
+        return (int)350L;
     }
     /**
      * {@snippet :
@@ -3016,11 +3016,11 @@ public class Index_h  {
     }
     /**
      * {@snippet :
-     * enum CXCursorKind.CXCursor_LastExtraDecl = 603;
+     * enum CXCursorKind.CXCursor_LastExtraDecl = 604;
      * }
      */
     public static int CXCursor_LastExtraDecl() {
-        return (int)603L;
+        return (int)604L;
     }
     /**
      * {@snippet :
@@ -3031,11 +3031,11 @@ public class Index_h  {
         return (int)700L;
     }
     public static MethodHandle clang_getNullCursor$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.clang_getNullCursor$MH,"clang_getNullCursor");
+        return RuntimeHelper.requireNonNull(constants$9.const$5,"clang_getNullCursor");
     }
     /**
      * {@snippet :
-     * CXCursor clang_getNullCursor();
+     * struct CXCursor clang_getNullCursor();
      * }
      */
     public static MemorySegment clang_getNullCursor(SegmentAllocator allocator) {
@@ -3047,11 +3047,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getTranslationUnitCursor$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.clang_getTranslationUnitCursor$MH,"clang_getTranslationUnitCursor");
+        return RuntimeHelper.requireNonNull(constants$10.const$1,"clang_getTranslationUnitCursor");
     }
     /**
      * {@snippet :
-     * CXCursor clang_getTranslationUnitCursor(CXTranslationUnit);
+     * struct CXCursor clang_getTranslationUnitCursor(struct CXTranslationUnitImpl*);
      * }
      */
     public static MemorySegment clang_getTranslationUnitCursor(SegmentAllocator allocator, MemorySegment x1) {
@@ -3063,11 +3063,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_equalCursors$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.clang_equalCursors$MH,"clang_equalCursors");
+        return RuntimeHelper.requireNonNull(constants$10.const$3,"clang_equalCursors");
     }
     /**
      * {@snippet :
-     * unsigned int clang_equalCursors(CXCursor, CXCursor);
+     * unsigned int clang_equalCursors(struct CXCursor, struct CXCursor);
      * }
      */
     public static int clang_equalCursors(MemorySegment x0, MemorySegment x1) {
@@ -3079,11 +3079,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_Cursor_isNull$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.clang_Cursor_isNull$MH,"clang_Cursor_isNull");
+        return RuntimeHelper.requireNonNull(constants$10.const$5,"clang_Cursor_isNull");
     }
     /**
      * {@snippet :
-     * int clang_Cursor_isNull(CXCursor cursor);
+     * int clang_Cursor_isNull(struct CXCursor cursor);
      * }
      */
     public static int clang_Cursor_isNull(MemorySegment cursor) {
@@ -3095,11 +3095,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCursorKind$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.clang_getCursorKind$MH,"clang_getCursorKind");
+        return RuntimeHelper.requireNonNull(constants$11.const$0,"clang_getCursorKind");
     }
     /**
      * {@snippet :
-     * enum CXCursorKind clang_getCursorKind(CXCursor);
+     * enum CXCursorKind clang_getCursorKind(struct CXCursor);
      * }
      */
     public static int clang_getCursorKind(MemorySegment x0) {
@@ -3111,7 +3111,7 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_isDeclaration$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.clang_isDeclaration$MH,"clang_isDeclaration");
+        return RuntimeHelper.requireNonNull(constants$11.const$2,"clang_isDeclaration");
     }
     /**
      * {@snippet :
@@ -3127,7 +3127,7 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_isAttribute$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.clang_isAttribute$MH,"clang_isAttribute");
+        return RuntimeHelper.requireNonNull(constants$11.const$3,"clang_isAttribute");
     }
     /**
      * {@snippet :
@@ -3143,7 +3143,7 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_isInvalid$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.clang_isInvalid$MH,"clang_isInvalid");
+        return RuntimeHelper.requireNonNull(constants$11.const$4,"clang_isInvalid");
     }
     /**
      * {@snippet :
@@ -3159,7 +3159,7 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_isPreprocessing$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.clang_isPreprocessing$MH,"clang_isPreprocessing");
+        return RuntimeHelper.requireNonNull(constants$11.const$5,"clang_isPreprocessing");
     }
     /**
      * {@snippet :
@@ -3215,11 +3215,11 @@ public class Index_h  {
         return (int)4L;
     }
     public static MethodHandle clang_getCursorLinkage$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.clang_getCursorLinkage$MH,"clang_getCursorLinkage");
+        return RuntimeHelper.requireNonNull(constants$12.const$0,"clang_getCursorLinkage");
     }
     /**
      * {@snippet :
-     * enum CXLinkageKind clang_getCursorLinkage(CXCursor cursor);
+     * enum CXLinkageKind clang_getCursorLinkage(struct CXCursor cursor);
      * }
      */
     public static int clang_getCursorLinkage(MemorySegment cursor) {
@@ -3263,11 +3263,11 @@ public class Index_h  {
         return (int)3L;
     }
     public static MethodHandle clang_getCursorLanguage$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.clang_getCursorLanguage$MH,"clang_getCursorLanguage");
+        return RuntimeHelper.requireNonNull(constants$12.const$1,"clang_getCursorLanguage");
     }
     /**
      * {@snippet :
-     * enum CXLanguageKind clang_getCursorLanguage(CXCursor cursor);
+     * enum CXLanguageKind clang_getCursorLanguage(struct CXCursor cursor);
      * }
      */
     public static int clang_getCursorLanguage(MemorySegment cursor) {
@@ -3279,11 +3279,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_Cursor_getTranslationUnit$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.clang_Cursor_getTranslationUnit$MH,"clang_Cursor_getTranslationUnit");
+        return RuntimeHelper.requireNonNull(constants$12.const$3,"clang_Cursor_getTranslationUnit");
     }
     /**
      * {@snippet :
-     * CXTranslationUnit clang_Cursor_getTranslationUnit(CXCursor);
+     * struct CXTranslationUnitImpl* clang_Cursor_getTranslationUnit(struct CXCursor);
      * }
      */
     public static MemorySegment clang_Cursor_getTranslationUnit(MemorySegment x0) {
@@ -3295,11 +3295,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCursorLocation$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.clang_getCursorLocation$MH,"clang_getCursorLocation");
+        return RuntimeHelper.requireNonNull(constants$12.const$5,"clang_getCursorLocation");
     }
     /**
      * {@snippet :
-     * CXSourceLocation clang_getCursorLocation(CXCursor);
+     * struct CXSourceLocation clang_getCursorLocation(struct CXCursor);
      * }
      */
     public static MemorySegment clang_getCursorLocation(SegmentAllocator allocator, MemorySegment x1) {
@@ -3311,11 +3311,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCursorExtent$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.clang_getCursorExtent$MH,"clang_getCursorExtent");
+        return RuntimeHelper.requireNonNull(constants$13.const$1,"clang_getCursorExtent");
     }
     /**
      * {@snippet :
-     * CXSourceRange clang_getCursorExtent(CXCursor);
+     * struct CXSourceRange clang_getCursorExtent(struct CXCursor);
      * }
      */
     public static MemorySegment clang_getCursorExtent(SegmentAllocator allocator, MemorySegment x1) {
@@ -3640,6 +3640,14 @@ public class Index_h  {
     }
     /**
      * {@snippet :
+     * enum CXTypeKind.CXType_BFloat16 = 39;
+     * }
+     */
+    public static int CXType_BFloat16() {
+        return (int)39L;
+    }
+    /**
+     * {@snippet :
      * enum CXTypeKind.CXType_FirstBuiltin = 2;
      * }
      */
@@ -3648,11 +3656,11 @@ public class Index_h  {
     }
     /**
      * {@snippet :
-     * enum CXTypeKind.CXType_LastBuiltin = 39;
+     * enum CXTypeKind.CXType_LastBuiltin = 40;
      * }
      */
     public static int CXType_LastBuiltin() {
-        return (int)39L;
+        return (int)40L;
     }
     /**
      * {@snippet :
@@ -4431,11 +4439,11 @@ public class Index_h  {
         return (int)200L;
     }
     public static MethodHandle clang_getCursorType$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.clang_getCursorType$MH,"clang_getCursorType");
+        return RuntimeHelper.requireNonNull(constants$13.const$3,"clang_getCursorType");
     }
     /**
      * {@snippet :
-     * CXType clang_getCursorType(CXCursor C);
+     * struct CXType clang_getCursorType(struct CXCursor C);
      * }
      */
     public static MemorySegment clang_getCursorType(SegmentAllocator allocator, MemorySegment C) {
@@ -4447,11 +4455,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getTypeSpelling$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.clang_getTypeSpelling$MH,"clang_getTypeSpelling");
+        return RuntimeHelper.requireNonNull(constants$13.const$5,"clang_getTypeSpelling");
     }
     /**
      * {@snippet :
-     * CXString clang_getTypeSpelling(CXType CT);
+     * struct CXString clang_getTypeSpelling(struct CXType CT);
      * }
      */
     public static MemorySegment clang_getTypeSpelling(SegmentAllocator allocator, MemorySegment CT) {
@@ -4463,11 +4471,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getTypedefDeclUnderlyingType$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.clang_getTypedefDeclUnderlyingType$MH,"clang_getTypedefDeclUnderlyingType");
+        return RuntimeHelper.requireNonNull(constants$14.const$0,"clang_getTypedefDeclUnderlyingType");
     }
     /**
      * {@snippet :
-     * CXType clang_getTypedefDeclUnderlyingType(CXCursor C);
+     * struct CXType clang_getTypedefDeclUnderlyingType(struct CXCursor C);
      * }
      */
     public static MemorySegment clang_getTypedefDeclUnderlyingType(SegmentAllocator allocator, MemorySegment C) {
@@ -4479,11 +4487,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getEnumDeclIntegerType$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.clang_getEnumDeclIntegerType$MH,"clang_getEnumDeclIntegerType");
+        return RuntimeHelper.requireNonNull(constants$14.const$1,"clang_getEnumDeclIntegerType");
     }
     /**
      * {@snippet :
-     * CXType clang_getEnumDeclIntegerType(CXCursor C);
+     * struct CXType clang_getEnumDeclIntegerType(struct CXCursor C);
      * }
      */
     public static MemorySegment clang_getEnumDeclIntegerType(SegmentAllocator allocator, MemorySegment C) {
@@ -4495,11 +4503,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getEnumConstantDeclValue$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.clang_getEnumConstantDeclValue$MH,"clang_getEnumConstantDeclValue");
+        return RuntimeHelper.requireNonNull(constants$14.const$3,"clang_getEnumConstantDeclValue");
     }
     /**
      * {@snippet :
-     * long long clang_getEnumConstantDeclValue(CXCursor C);
+     * long long clang_getEnumConstantDeclValue(struct CXCursor C);
      * }
      */
     public static long clang_getEnumConstantDeclValue(MemorySegment C) {
@@ -4511,11 +4519,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getEnumConstantDeclUnsignedValue$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.clang_getEnumConstantDeclUnsignedValue$MH,"clang_getEnumConstantDeclUnsignedValue");
+        return RuntimeHelper.requireNonNull(constants$14.const$4,"clang_getEnumConstantDeclUnsignedValue");
     }
     /**
      * {@snippet :
-     * unsigned long long clang_getEnumConstantDeclUnsignedValue(CXCursor C);
+     * unsigned long long clang_getEnumConstantDeclUnsignedValue(struct CXCursor C);
      * }
      */
     public static long clang_getEnumConstantDeclUnsignedValue(MemorySegment C) {
@@ -4526,12 +4534,28 @@ public class Index_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle clang_getFieldDeclBitWidth$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.clang_getFieldDeclBitWidth$MH,"clang_getFieldDeclBitWidth");
+    public static MethodHandle clang_Cursor_isBitField$MH() {
+        return RuntimeHelper.requireNonNull(constants$14.const$5,"clang_Cursor_isBitField");
     }
     /**
      * {@snippet :
-     * int clang_getFieldDeclBitWidth(CXCursor C);
+     * unsigned int clang_Cursor_isBitField(struct CXCursor C);
+     * }
+     */
+    public static int clang_Cursor_isBitField(MemorySegment C) {
+        var mh$ = clang_Cursor_isBitField$MH();
+        try {
+            return (int)mh$.invokeExact(C);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_getFieldDeclBitWidth$MH() {
+        return RuntimeHelper.requireNonNull(constants$15.const$0,"clang_getFieldDeclBitWidth");
+    }
+    /**
+     * {@snippet :
+     * int clang_getFieldDeclBitWidth(struct CXCursor C);
      * }
      */
     public static int clang_getFieldDeclBitWidth(MemorySegment C) {
@@ -4543,11 +4567,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_Cursor_getNumArguments$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.clang_Cursor_getNumArguments$MH,"clang_Cursor_getNumArguments");
+        return RuntimeHelper.requireNonNull(constants$15.const$1,"clang_Cursor_getNumArguments");
     }
     /**
      * {@snippet :
-     * int clang_Cursor_getNumArguments(CXCursor C);
+     * int clang_Cursor_getNumArguments(struct CXCursor C);
      * }
      */
     public static int clang_Cursor_getNumArguments(MemorySegment C) {
@@ -4559,11 +4583,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_Cursor_getArgument$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.clang_Cursor_getArgument$MH,"clang_Cursor_getArgument");
+        return RuntimeHelper.requireNonNull(constants$15.const$3,"clang_Cursor_getArgument");
     }
     /**
      * {@snippet :
-     * CXCursor clang_Cursor_getArgument(CXCursor C, unsigned int i);
+     * struct CXCursor clang_Cursor_getArgument(struct CXCursor C, unsigned int i);
      * }
      */
     public static MemorySegment clang_Cursor_getArgument(SegmentAllocator allocator, MemorySegment C, int i) {
@@ -4575,11 +4599,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_equalTypes$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.clang_equalTypes$MH,"clang_equalTypes");
+        return RuntimeHelper.requireNonNull(constants$15.const$5,"clang_equalTypes");
     }
     /**
      * {@snippet :
-     * unsigned int clang_equalTypes(CXType A, CXType B);
+     * unsigned int clang_equalTypes(struct CXType A, struct CXType B);
      * }
      */
     public static int clang_equalTypes(MemorySegment A, MemorySegment B) {
@@ -4591,11 +4615,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCanonicalType$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.clang_getCanonicalType$MH,"clang_getCanonicalType");
+        return RuntimeHelper.requireNonNull(constants$16.const$1,"clang_getCanonicalType");
     }
     /**
      * {@snippet :
-     * CXType clang_getCanonicalType(CXType T);
+     * struct CXType clang_getCanonicalType(struct CXType T);
      * }
      */
     public static MemorySegment clang_getCanonicalType(SegmentAllocator allocator, MemorySegment T) {
@@ -4607,11 +4631,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_isConstQualifiedType$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.clang_isConstQualifiedType$MH,"clang_isConstQualifiedType");
+        return RuntimeHelper.requireNonNull(constants$16.const$3,"clang_isConstQualifiedType");
     }
     /**
      * {@snippet :
-     * unsigned int clang_isConstQualifiedType(CXType T);
+     * unsigned int clang_isConstQualifiedType(struct CXType T);
      * }
      */
     public static int clang_isConstQualifiedType(MemorySegment T) {
@@ -4623,11 +4647,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_Cursor_isMacroFunctionLike$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.clang_Cursor_isMacroFunctionLike$MH,"clang_Cursor_isMacroFunctionLike");
+        return RuntimeHelper.requireNonNull(constants$16.const$4,"clang_Cursor_isMacroFunctionLike");
     }
     /**
      * {@snippet :
-     * unsigned int clang_Cursor_isMacroFunctionLike(CXCursor C);
+     * unsigned int clang_Cursor_isMacroFunctionLike(struct CXCursor C);
      * }
      */
     public static int clang_Cursor_isMacroFunctionLike(MemorySegment C) {
@@ -4639,11 +4663,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_Cursor_isFunctionInlined$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.clang_Cursor_isFunctionInlined$MH,"clang_Cursor_isFunctionInlined");
+        return RuntimeHelper.requireNonNull(constants$16.const$5,"clang_Cursor_isFunctionInlined");
     }
     /**
      * {@snippet :
-     * unsigned int clang_Cursor_isFunctionInlined(CXCursor C);
+     * unsigned int clang_Cursor_isFunctionInlined(struct CXCursor C);
      * }
      */
     public static int clang_Cursor_isFunctionInlined(MemorySegment C) {
@@ -4655,11 +4679,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_isVolatileQualifiedType$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.clang_isVolatileQualifiedType$MH,"clang_isVolatileQualifiedType");
+        return RuntimeHelper.requireNonNull(constants$17.const$0,"clang_isVolatileQualifiedType");
     }
     /**
      * {@snippet :
-     * unsigned int clang_isVolatileQualifiedType(CXType T);
+     * unsigned int clang_isVolatileQualifiedType(struct CXType T);
      * }
      */
     public static int clang_isVolatileQualifiedType(MemorySegment T) {
@@ -4671,11 +4695,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getTypedefName$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.clang_getTypedefName$MH,"clang_getTypedefName");
+        return RuntimeHelper.requireNonNull(constants$17.const$1,"clang_getTypedefName");
     }
     /**
      * {@snippet :
-     * CXString clang_getTypedefName(CXType CT);
+     * struct CXString clang_getTypedefName(struct CXType CT);
      * }
      */
     public static MemorySegment clang_getTypedefName(SegmentAllocator allocator, MemorySegment CT) {
@@ -4687,11 +4711,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getPointeeType$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.clang_getPointeeType$MH,"clang_getPointeeType");
+        return RuntimeHelper.requireNonNull(constants$17.const$2,"clang_getPointeeType");
     }
     /**
      * {@snippet :
-     * CXType clang_getPointeeType(CXType T);
+     * struct CXType clang_getPointeeType(struct CXType T);
      * }
      */
     public static MemorySegment clang_getPointeeType(SegmentAllocator allocator, MemorySegment T) {
@@ -4703,11 +4727,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getTypeDeclaration$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.clang_getTypeDeclaration$MH,"clang_getTypeDeclaration");
+        return RuntimeHelper.requireNonNull(constants$17.const$4,"clang_getTypeDeclaration");
     }
     /**
      * {@snippet :
-     * CXCursor clang_getTypeDeclaration(CXType T);
+     * struct CXCursor clang_getTypeDeclaration(struct CXType T);
      * }
      */
     public static MemorySegment clang_getTypeDeclaration(SegmentAllocator allocator, MemorySegment T) {
@@ -4719,11 +4743,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getTypeKindSpelling$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.clang_getTypeKindSpelling$MH,"clang_getTypeKindSpelling");
+        return RuntimeHelper.requireNonNull(constants$17.const$6,"clang_getTypeKindSpelling");
     }
     /**
      * {@snippet :
-     * CXString clang_getTypeKindSpelling(enum CXTypeKind K);
+     * struct CXString clang_getTypeKindSpelling(enum CXTypeKind K);
      * }
      */
     public static MemorySegment clang_getTypeKindSpelling(SegmentAllocator allocator, int K) {
@@ -4735,11 +4759,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getFunctionTypeCallingConv$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.clang_getFunctionTypeCallingConv$MH,"clang_getFunctionTypeCallingConv");
+        return RuntimeHelper.requireNonNull(constants$18.const$0,"clang_getFunctionTypeCallingConv");
     }
     /**
      * {@snippet :
-     * enum CXCallingConv clang_getFunctionTypeCallingConv(CXType T);
+     * enum CXCallingConv clang_getFunctionTypeCallingConv(struct CXType T);
      * }
      */
     public static int clang_getFunctionTypeCallingConv(MemorySegment T) {
@@ -4751,11 +4775,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getResultType$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.clang_getResultType$MH,"clang_getResultType");
+        return RuntimeHelper.requireNonNull(constants$18.const$1,"clang_getResultType");
     }
     /**
      * {@snippet :
-     * CXType clang_getResultType(CXType T);
+     * struct CXType clang_getResultType(struct CXType T);
      * }
      */
     public static MemorySegment clang_getResultType(SegmentAllocator allocator, MemorySegment T) {
@@ -4767,11 +4791,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getNumArgTypes$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.clang_getNumArgTypes$MH,"clang_getNumArgTypes");
+        return RuntimeHelper.requireNonNull(constants$18.const$2,"clang_getNumArgTypes");
     }
     /**
      * {@snippet :
-     * int clang_getNumArgTypes(CXType T);
+     * int clang_getNumArgTypes(struct CXType T);
      * }
      */
     public static int clang_getNumArgTypes(MemorySegment T) {
@@ -4783,11 +4807,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getArgType$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.clang_getArgType$MH,"clang_getArgType");
+        return RuntimeHelper.requireNonNull(constants$18.const$4,"clang_getArgType");
     }
     /**
      * {@snippet :
-     * CXType clang_getArgType(CXType T, unsigned int i);
+     * struct CXType clang_getArgType(struct CXType T, unsigned int i);
      * }
      */
     public static MemorySegment clang_getArgType(SegmentAllocator allocator, MemorySegment T, int i) {
@@ -4799,11 +4823,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_isFunctionTypeVariadic$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.clang_isFunctionTypeVariadic$MH,"clang_isFunctionTypeVariadic");
+        return RuntimeHelper.requireNonNull(constants$18.const$5,"clang_isFunctionTypeVariadic");
     }
     /**
      * {@snippet :
-     * unsigned int clang_isFunctionTypeVariadic(CXType T);
+     * unsigned int clang_isFunctionTypeVariadic(struct CXType T);
      * }
      */
     public static int clang_isFunctionTypeVariadic(MemorySegment T) {
@@ -4815,11 +4839,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCursorResultType$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.clang_getCursorResultType$MH,"clang_getCursorResultType");
+        return RuntimeHelper.requireNonNull(constants$19.const$0,"clang_getCursorResultType");
     }
     /**
      * {@snippet :
-     * CXType clang_getCursorResultType(CXCursor C);
+     * struct CXType clang_getCursorResultType(struct CXCursor C);
      * }
      */
     public static MemorySegment clang_getCursorResultType(SegmentAllocator allocator, MemorySegment C) {
@@ -4831,11 +4855,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getElementType$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.clang_getElementType$MH,"clang_getElementType");
+        return RuntimeHelper.requireNonNull(constants$19.const$1,"clang_getElementType");
     }
     /**
      * {@snippet :
-     * CXType clang_getElementType(CXType T);
+     * struct CXType clang_getElementType(struct CXType T);
      * }
      */
     public static MemorySegment clang_getElementType(SegmentAllocator allocator, MemorySegment T) {
@@ -4847,11 +4871,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getNumElements$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.clang_getNumElements$MH,"clang_getNumElements");
+        return RuntimeHelper.requireNonNull(constants$19.const$3,"clang_getNumElements");
     }
     /**
      * {@snippet :
-     * long long clang_getNumElements(CXType T);
+     * long long clang_getNumElements(struct CXType T);
      * }
      */
     public static long clang_getNumElements(MemorySegment T) {
@@ -4863,11 +4887,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getArrayElementType$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.clang_getArrayElementType$MH,"clang_getArrayElementType");
+        return RuntimeHelper.requireNonNull(constants$19.const$4,"clang_getArrayElementType");
     }
     /**
      * {@snippet :
-     * CXType clang_getArrayElementType(CXType T);
+     * struct CXType clang_getArrayElementType(struct CXType T);
      * }
      */
     public static MemorySegment clang_getArrayElementType(SegmentAllocator allocator, MemorySegment T) {
@@ -4879,11 +4903,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getArraySize$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.clang_getArraySize$MH,"clang_getArraySize");
+        return RuntimeHelper.requireNonNull(constants$19.const$5,"clang_getArraySize");
     }
     /**
      * {@snippet :
-     * long long clang_getArraySize(CXType T);
+     * long long clang_getArraySize(struct CXType T);
      * }
      */
     public static long clang_getArraySize(MemorySegment T) {
@@ -4974,28 +4998,12 @@ public class Index_h  {
     public static int CXTypeLayoutError_Undeduced() {
         return (int)-6L;
     }
-    public static MethodHandle clang_Type_getSizeOf$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.clang_Type_getSizeOf$MH,"clang_Type_getSizeOf");
-    }
-    /**
-     * {@snippet :
-     * long long clang_Type_getSizeOf(CXType T);
-     * }
-     */
-    public static long clang_Type_getSizeOf(MemorySegment T) {
-        var mh$ = clang_Type_getSizeOf$MH();
-        try {
-            return (long)mh$.invokeExact(T);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
     public static MethodHandle clang_Type_getAlignOf$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.clang_Type_getAlignOf$MH,"clang_Type_getAlignOf");
+        return RuntimeHelper.requireNonNull(constants$20.const$0,"clang_Type_getAlignOf");
     }
     /**
      * {@snippet :
-     * long long clang_Type_getAlignOf(CXType T);
+     * long long clang_Type_getAlignOf(struct CXType T);
      * }
      */
     public static long clang_Type_getAlignOf(MemorySegment T) {
@@ -5006,12 +5014,28 @@ public class Index_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle clang_Type_getOffsetOf$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.clang_Type_getOffsetOf$MH,"clang_Type_getOffsetOf");
+    public static MethodHandle clang_Type_getSizeOf$MH() {
+        return RuntimeHelper.requireNonNull(constants$20.const$1,"clang_Type_getSizeOf");
     }
     /**
      * {@snippet :
-     * long long clang_Type_getOffsetOf(CXType T, char* S);
+     * long long clang_Type_getSizeOf(struct CXType T);
+     * }
+     */
+    public static long clang_Type_getSizeOf(MemorySegment T) {
+        var mh$ = clang_Type_getSizeOf$MH();
+        try {
+            return (long)mh$.invokeExact(T);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clang_Type_getOffsetOf$MH() {
+        return RuntimeHelper.requireNonNull(constants$20.const$3,"clang_Type_getOffsetOf");
+    }
+    /**
+     * {@snippet :
+     * long long clang_Type_getOffsetOf(struct CXType T, char* S);
      * }
      */
     public static long clang_Type_getOffsetOf(MemorySegment T, MemorySegment S) {
@@ -5023,11 +5047,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_Cursor_isAnonymous$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.clang_Cursor_isAnonymous$MH,"clang_Cursor_isAnonymous");
+        return RuntimeHelper.requireNonNull(constants$20.const$4,"clang_Cursor_isAnonymous");
     }
     /**
      * {@snippet :
-     * unsigned int clang_Cursor_isAnonymous(CXCursor C);
+     * unsigned int clang_Cursor_isAnonymous(struct CXCursor C);
      * }
      */
     public static int clang_Cursor_isAnonymous(MemorySegment C) {
@@ -5039,31 +5063,15 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_Cursor_isAnonymousRecordDecl$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.clang_Cursor_isAnonymousRecordDecl$MH,"clang_Cursor_isAnonymousRecordDecl");
+        return RuntimeHelper.requireNonNull(constants$20.const$5,"clang_Cursor_isAnonymousRecordDecl");
     }
     /**
      * {@snippet :
-     * unsigned int clang_Cursor_isAnonymousRecordDecl(CXCursor C);
+     * unsigned int clang_Cursor_isAnonymousRecordDecl(struct CXCursor C);
      * }
      */
     public static int clang_Cursor_isAnonymousRecordDecl(MemorySegment C) {
         var mh$ = clang_Cursor_isAnonymousRecordDecl$MH();
-        try {
-            return (int)mh$.invokeExact(C);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clang_Cursor_isBitField$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.clang_Cursor_isBitField$MH,"clang_Cursor_isBitField");
-    }
-    /**
-     * {@snippet :
-     * unsigned int clang_Cursor_isBitField(CXCursor C);
-     * }
-     */
-    public static int clang_Cursor_isBitField(MemorySegment C) {
-        var mh$ = clang_Cursor_isBitField$MH();
         try {
             return (int)mh$.invokeExact(C);
         } catch (Throwable ex$) {
@@ -5095,11 +5103,11 @@ public class Index_h  {
         return (int)2L;
     }
     public static MethodHandle clang_visitChildren$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.clang_visitChildren$MH,"clang_visitChildren");
+        return RuntimeHelper.requireNonNull(constants$21.const$5,"clang_visitChildren");
     }
     /**
      * {@snippet :
-     * unsigned int clang_visitChildren(CXCursor parent, CXCursorVisitor visitor, CXClientData client_data);
+     * unsigned int clang_visitChildren(struct CXCursor parent, enum CXChildVisitResult (*visitor)(struct CXCursor,struct CXCursor,void*), void* client_data);
      * }
      */
     public static int clang_visitChildren(MemorySegment parent, MemorySegment visitor, MemorySegment client_data) {
@@ -5111,11 +5119,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCursorUSR$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.clang_getCursorUSR$MH,"clang_getCursorUSR");
+        return RuntimeHelper.requireNonNull(constants$22.const$1,"clang_getCursorUSR");
     }
     /**
      * {@snippet :
-     * CXString clang_getCursorUSR(CXCursor);
+     * struct CXString clang_getCursorUSR(struct CXCursor);
      * }
      */
     public static MemorySegment clang_getCursorUSR(SegmentAllocator allocator, MemorySegment x1) {
@@ -5127,11 +5135,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCursorSpelling$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.clang_getCursorSpelling$MH,"clang_getCursorSpelling");
+        return RuntimeHelper.requireNonNull(constants$22.const$2,"clang_getCursorSpelling");
     }
     /**
      * {@snippet :
-     * CXString clang_getCursorSpelling(CXCursor);
+     * struct CXString clang_getCursorSpelling(struct CXCursor);
      * }
      */
     public static MemorySegment clang_getCursorSpelling(SegmentAllocator allocator, MemorySegment x1) {
@@ -5359,11 +5367,11 @@ public class Index_h  {
         return (int)25L;
     }
     public static MethodHandle clang_PrintingPolicy_getProperty$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.clang_PrintingPolicy_getProperty$MH,"clang_PrintingPolicy_getProperty");
+        return RuntimeHelper.requireNonNull(constants$22.const$4,"clang_PrintingPolicy_getProperty");
     }
     /**
      * {@snippet :
-     * unsigned int clang_PrintingPolicy_getProperty(CXPrintingPolicy Policy, enum CXPrintingPolicyProperty Property);
+     * unsigned int clang_PrintingPolicy_getProperty(void* Policy, enum CXPrintingPolicyProperty Property);
      * }
      */
     public static int clang_PrintingPolicy_getProperty(MemorySegment Policy, int Property) {
@@ -5375,11 +5383,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_PrintingPolicy_setProperty$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.clang_PrintingPolicy_setProperty$MH,"clang_PrintingPolicy_setProperty");
+        return RuntimeHelper.requireNonNull(constants$22.const$6,"clang_PrintingPolicy_setProperty");
     }
     /**
      * {@snippet :
-     * void clang_PrintingPolicy_setProperty(CXPrintingPolicy Policy, enum CXPrintingPolicyProperty Property, unsigned int Value);
+     * void clang_PrintingPolicy_setProperty(void* Policy, enum CXPrintingPolicyProperty Property, unsigned int Value);
      * }
      */
     public static void clang_PrintingPolicy_setProperty(MemorySegment Policy, int Property, int Value) {
@@ -5391,11 +5399,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCursorPrintingPolicy$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.clang_getCursorPrintingPolicy$MH,"clang_getCursorPrintingPolicy");
+        return RuntimeHelper.requireNonNull(constants$23.const$0,"clang_getCursorPrintingPolicy");
     }
     /**
      * {@snippet :
-     * CXPrintingPolicy clang_getCursorPrintingPolicy(CXCursor);
+     * void* clang_getCursorPrintingPolicy(struct CXCursor);
      * }
      */
     public static MemorySegment clang_getCursorPrintingPolicy(MemorySegment x0) {
@@ -5407,11 +5415,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_PrintingPolicy_dispose$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.clang_PrintingPolicy_dispose$MH,"clang_PrintingPolicy_dispose");
+        return RuntimeHelper.requireNonNull(constants$23.const$1,"clang_PrintingPolicy_dispose");
     }
     /**
      * {@snippet :
-     * void clang_PrintingPolicy_dispose(CXPrintingPolicy Policy);
+     * void clang_PrintingPolicy_dispose(void* Policy);
      * }
      */
     public static void clang_PrintingPolicy_dispose(MemorySegment Policy) {
@@ -5423,11 +5431,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCursorPrettyPrinted$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.clang_getCursorPrettyPrinted$MH,"clang_getCursorPrettyPrinted");
+        return RuntimeHelper.requireNonNull(constants$23.const$3,"clang_getCursorPrettyPrinted");
     }
     /**
      * {@snippet :
-     * CXString clang_getCursorPrettyPrinted(CXCursor Cursor, CXPrintingPolicy Policy);
+     * struct CXString clang_getCursorPrettyPrinted(struct CXCursor Cursor, void* Policy);
      * }
      */
     public static MemorySegment clang_getCursorPrettyPrinted(SegmentAllocator allocator, MemorySegment Cursor, MemorySegment Policy) {
@@ -5439,11 +5447,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCursorDisplayName$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.clang_getCursorDisplayName$MH,"clang_getCursorDisplayName");
+        return RuntimeHelper.requireNonNull(constants$23.const$4,"clang_getCursorDisplayName");
     }
     /**
      * {@snippet :
-     * CXString clang_getCursorDisplayName(CXCursor);
+     * struct CXString clang_getCursorDisplayName(struct CXCursor);
      * }
      */
     public static MemorySegment clang_getCursorDisplayName(SegmentAllocator allocator, MemorySegment x1) {
@@ -5455,11 +5463,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCursorReferenced$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.clang_getCursorReferenced$MH,"clang_getCursorReferenced");
+        return RuntimeHelper.requireNonNull(constants$23.const$6,"clang_getCursorReferenced");
     }
     /**
      * {@snippet :
-     * CXCursor clang_getCursorReferenced(CXCursor);
+     * struct CXCursor clang_getCursorReferenced(struct CXCursor);
      * }
      */
     public static MemorySegment clang_getCursorReferenced(SegmentAllocator allocator, MemorySegment x1) {
@@ -5471,11 +5479,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCursorDefinition$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.clang_getCursorDefinition$MH,"clang_getCursorDefinition");
+        return RuntimeHelper.requireNonNull(constants$24.const$0,"clang_getCursorDefinition");
     }
     /**
      * {@snippet :
-     * CXCursor clang_getCursorDefinition(CXCursor);
+     * struct CXCursor clang_getCursorDefinition(struct CXCursor);
      * }
      */
     public static MemorySegment clang_getCursorDefinition(SegmentAllocator allocator, MemorySegment x1) {
@@ -5487,11 +5495,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_isCursorDefinition$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.clang_isCursorDefinition$MH,"clang_isCursorDefinition");
+        return RuntimeHelper.requireNonNull(constants$24.const$1,"clang_isCursorDefinition");
     }
     /**
      * {@snippet :
-     * unsigned int clang_isCursorDefinition(CXCursor);
+     * unsigned int clang_isCursorDefinition(struct CXCursor);
      * }
      */
     public static int clang_isCursorDefinition(MemorySegment x0) {
@@ -5503,11 +5511,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_Cursor_isVariadic$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.clang_Cursor_isVariadic$MH,"clang_Cursor_isVariadic");
+        return RuntimeHelper.requireNonNull(constants$24.const$2,"clang_Cursor_isVariadic");
     }
     /**
      * {@snippet :
-     * unsigned int clang_Cursor_isVariadic(CXCursor C);
+     * unsigned int clang_Cursor_isVariadic(struct CXCursor C);
      * }
      */
     public static int clang_Cursor_isVariadic(MemorySegment C) {
@@ -5519,11 +5527,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_Cursor_getMangling$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.clang_Cursor_getMangling$MH,"clang_Cursor_getMangling");
+        return RuntimeHelper.requireNonNull(constants$24.const$3,"clang_Cursor_getMangling");
     }
     /**
      * {@snippet :
-     * CXString clang_Cursor_getMangling(CXCursor);
+     * struct CXString clang_Cursor_getMangling(struct CXCursor);
      * }
      */
     public static MemorySegment clang_Cursor_getMangling(SegmentAllocator allocator, MemorySegment x1) {
@@ -5575,11 +5583,11 @@ public class Index_h  {
         return (int)4L;
     }
     public static MethodHandle clang_getTokenKind$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.clang_getTokenKind$MH,"clang_getTokenKind");
+        return RuntimeHelper.requireNonNull(constants$24.const$5,"clang_getTokenKind");
     }
     /**
      * {@snippet :
-     * CXTokenKind clang_getTokenKind(CXToken);
+     * enum CXTokenKind clang_getTokenKind(struct CXToken);
      * }
      */
     public static int clang_getTokenKind(MemorySegment x0) {
@@ -5591,11 +5599,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getTokenSpelling$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.clang_getTokenSpelling$MH,"clang_getTokenSpelling");
+        return RuntimeHelper.requireNonNull(constants$25.const$1,"clang_getTokenSpelling");
     }
     /**
      * {@snippet :
-     * CXString clang_getTokenSpelling(CXTranslationUnit, CXToken);
+     * struct CXString clang_getTokenSpelling(struct CXTranslationUnitImpl*, struct CXToken);
      * }
      */
     public static MemorySegment clang_getTokenSpelling(SegmentAllocator allocator, MemorySegment x1, MemorySegment x2) {
@@ -5607,11 +5615,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getTokenLocation$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.clang_getTokenLocation$MH,"clang_getTokenLocation");
+        return RuntimeHelper.requireNonNull(constants$25.const$3,"clang_getTokenLocation");
     }
     /**
      * {@snippet :
-     * CXSourceLocation clang_getTokenLocation(CXTranslationUnit, CXToken);
+     * struct CXSourceLocation clang_getTokenLocation(struct CXTranslationUnitImpl*, struct CXToken);
      * }
      */
     public static MemorySegment clang_getTokenLocation(SegmentAllocator allocator, MemorySegment x1, MemorySegment x2) {
@@ -5623,11 +5631,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getTokenExtent$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.clang_getTokenExtent$MH,"clang_getTokenExtent");
+        return RuntimeHelper.requireNonNull(constants$25.const$5,"clang_getTokenExtent");
     }
     /**
      * {@snippet :
-     * CXSourceRange clang_getTokenExtent(CXTranslationUnit, CXToken);
+     * struct CXSourceRange clang_getTokenExtent(struct CXTranslationUnitImpl*, struct CXToken);
      * }
      */
     public static MemorySegment clang_getTokenExtent(SegmentAllocator allocator, MemorySegment x1, MemorySegment x2) {
@@ -5639,11 +5647,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_tokenize$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.clang_tokenize$MH,"clang_tokenize");
+        return RuntimeHelper.requireNonNull(constants$26.const$1,"clang_tokenize");
     }
     /**
      * {@snippet :
-     * void clang_tokenize(CXTranslationUnit TU, CXSourceRange Range, CXToken** Tokens, unsigned int* NumTokens);
+     * void clang_tokenize(struct CXTranslationUnitImpl* TU, struct CXSourceRange Range, struct CXToken** Tokens, unsigned int* NumTokens);
      * }
      */
     public static void clang_tokenize(MemorySegment TU, MemorySegment Range, MemorySegment Tokens, MemorySegment NumTokens) {
@@ -5655,11 +5663,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_disposeTokens$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.clang_disposeTokens$MH,"clang_disposeTokens");
+        return RuntimeHelper.requireNonNull(constants$26.const$3,"clang_disposeTokens");
     }
     /**
      * {@snippet :
-     * void clang_disposeTokens(CXTranslationUnit TU, CXToken* Tokens, unsigned int NumTokens);
+     * void clang_disposeTokens(struct CXTranslationUnitImpl* TU, struct CXToken* Tokens, unsigned int NumTokens);
      * }
      */
     public static void clang_disposeTokens(MemorySegment TU, MemorySegment Tokens, int NumTokens) {
@@ -5671,11 +5679,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getCursorKindSpelling$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.clang_getCursorKindSpelling$MH,"clang_getCursorKindSpelling");
+        return RuntimeHelper.requireNonNull(constants$26.const$4,"clang_getCursorKindSpelling");
     }
     /**
      * {@snippet :
-     * CXString clang_getCursorKindSpelling(enum CXCursorKind Kind);
+     * struct CXString clang_getCursorKindSpelling(enum CXCursorKind Kind);
      * }
      */
     public static MemorySegment clang_getCursorKindSpelling(SegmentAllocator allocator, int Kind) {
@@ -5687,11 +5695,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_getClangVersion$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.clang_getClangVersion$MH,"clang_getClangVersion");
+        return RuntimeHelper.requireNonNull(constants$26.const$6,"clang_getClangVersion");
     }
     /**
      * {@snippet :
-     * CXString clang_getClangVersion();
+     * struct CXString clang_getClangVersion();
      * }
      */
     public static MemorySegment clang_getClangVersion(SegmentAllocator allocator) {
@@ -5703,7 +5711,7 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_toggleCrashRecovery$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.clang_toggleCrashRecovery$MH,"clang_toggleCrashRecovery");
+        return RuntimeHelper.requireNonNull(constants$27.const$1,"clang_toggleCrashRecovery");
     }
     /**
      * {@snippet :
@@ -5719,11 +5727,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_Cursor_Evaluate$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.clang_Cursor_Evaluate$MH,"clang_Cursor_Evaluate");
+        return RuntimeHelper.requireNonNull(constants$27.const$2,"clang_Cursor_Evaluate");
     }
     /**
      * {@snippet :
-     * CXEvalResult clang_Cursor_Evaluate(CXCursor C);
+     * void* clang_Cursor_Evaluate(struct CXCursor C);
      * }
      */
     public static MemorySegment clang_Cursor_Evaluate(MemorySegment C) {
@@ -5735,11 +5743,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_EvalResult_getKind$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.clang_EvalResult_getKind$MH,"clang_EvalResult_getKind");
+        return RuntimeHelper.requireNonNull(constants$27.const$3,"clang_EvalResult_getKind");
     }
     /**
      * {@snippet :
-     * CXEvalResultKind clang_EvalResult_getKind(CXEvalResult E);
+     * enum CXEvalResultKind clang_EvalResult_getKind(void* E);
      * }
      */
     public static int clang_EvalResult_getKind(MemorySegment E) {
@@ -5751,11 +5759,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_EvalResult_getAsInt$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.clang_EvalResult_getAsInt$MH,"clang_EvalResult_getAsInt");
+        return RuntimeHelper.requireNonNull(constants$27.const$4,"clang_EvalResult_getAsInt");
     }
     /**
      * {@snippet :
-     * int clang_EvalResult_getAsInt(CXEvalResult E);
+     * int clang_EvalResult_getAsInt(void* E);
      * }
      */
     public static int clang_EvalResult_getAsInt(MemorySegment E) {
@@ -5767,11 +5775,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_EvalResult_getAsLongLong$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.clang_EvalResult_getAsLongLong$MH,"clang_EvalResult_getAsLongLong");
+        return RuntimeHelper.requireNonNull(constants$27.const$6,"clang_EvalResult_getAsLongLong");
     }
     /**
      * {@snippet :
-     * long long clang_EvalResult_getAsLongLong(CXEvalResult E);
+     * long long clang_EvalResult_getAsLongLong(void* E);
      * }
      */
     public static long clang_EvalResult_getAsLongLong(MemorySegment E) {
@@ -5783,11 +5791,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_EvalResult_isUnsignedInt$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.clang_EvalResult_isUnsignedInt$MH,"clang_EvalResult_isUnsignedInt");
+        return RuntimeHelper.requireNonNull(constants$28.const$0,"clang_EvalResult_isUnsignedInt");
     }
     /**
      * {@snippet :
-     * unsigned int clang_EvalResult_isUnsignedInt(CXEvalResult E);
+     * unsigned int clang_EvalResult_isUnsignedInt(void* E);
      * }
      */
     public static int clang_EvalResult_isUnsignedInt(MemorySegment E) {
@@ -5799,11 +5807,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_EvalResult_getAsUnsigned$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.clang_EvalResult_getAsUnsigned$MH,"clang_EvalResult_getAsUnsigned");
+        return RuntimeHelper.requireNonNull(constants$28.const$1,"clang_EvalResult_getAsUnsigned");
     }
     /**
      * {@snippet :
-     * unsigned long long clang_EvalResult_getAsUnsigned(CXEvalResult E);
+     * unsigned long long clang_EvalResult_getAsUnsigned(void* E);
      * }
      */
     public static long clang_EvalResult_getAsUnsigned(MemorySegment E) {
@@ -5815,11 +5823,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_EvalResult_getAsDouble$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.clang_EvalResult_getAsDouble$MH,"clang_EvalResult_getAsDouble");
+        return RuntimeHelper.requireNonNull(constants$28.const$3,"clang_EvalResult_getAsDouble");
     }
     /**
      * {@snippet :
-     * double clang_EvalResult_getAsDouble(CXEvalResult E);
+     * double clang_EvalResult_getAsDouble(void* E);
      * }
      */
     public static double clang_EvalResult_getAsDouble(MemorySegment E) {
@@ -5831,11 +5839,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_EvalResult_getAsStr$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.clang_EvalResult_getAsStr$MH,"clang_EvalResult_getAsStr");
+        return RuntimeHelper.requireNonNull(constants$28.const$4,"clang_EvalResult_getAsStr");
     }
     /**
      * {@snippet :
-     * char* clang_EvalResult_getAsStr(CXEvalResult E);
+     * char* clang_EvalResult_getAsStr(void* E);
      * }
      */
     public static MemorySegment clang_EvalResult_getAsStr(MemorySegment E) {
@@ -5847,11 +5855,11 @@ public class Index_h  {
         }
     }
     public static MethodHandle clang_EvalResult_dispose$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.clang_EvalResult_dispose$MH,"clang_EvalResult_dispose");
+        return RuntimeHelper.requireNonNull(constants$28.const$5,"clang_EvalResult_dispose");
     }
     /**
      * {@snippet :
-     * void clang_EvalResult_dispose(CXEvalResult E);
+     * void clang_EvalResult_dispose(void* E);
      * }
      */
     public static void clang_EvalResult_dispose(MemorySegment E) {
@@ -5864,7 +5872,7 @@ public class Index_h  {
     }
     /**
      * {@snippet :
-     * enum .CXResult_Success = 0;
+     * enum CXResult.CXResult_Success = 0;
      * }
      */
     public static int CXResult_Success() {
@@ -5872,7 +5880,7 @@ public class Index_h  {
     }
     /**
      * {@snippet :
-     * enum .CXResult_Invalid = 1;
+     * enum CXResult.CXResult_Invalid = 1;
      * }
      */
     public static int CXResult_Invalid() {
@@ -5880,7 +5888,7 @@ public class Index_h  {
     }
     /**
      * {@snippet :
-     * enum .CXResult_VisitBreak = 2;
+     * enum CXResult.CXResult_VisitBreak = 2;
      * }
      */
     public static int CXResult_VisitBreak() {

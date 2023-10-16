@@ -36,79 +36,41 @@ final class constants$8 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$8() {}
-    static final FunctionDescriptor clang_getTypedefDeclUnderlyingType$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("kind"),
-        MemoryLayout.paddingLayout(4),
-        MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-    ),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final MethodHandle clang_getTypedefDeclUnderlyingType$MH = RuntimeHelper.downcallHandle(
-        "clang_getTypedefDeclUnderlyingType",
-        constants$8.clang_getTypedefDeclUnderlyingType$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_parseTranslationUnit",
+        constants$8.const$0
     );
-    static final FunctionDescriptor clang_getEnumDeclIntegerType$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("kind"),
-        MemoryLayout.paddingLayout(4),
-        MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-    ),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle clang_getEnumDeclIntegerType$MH = RuntimeHelper.downcallHandle(
-        "clang_getEnumDeclIntegerType",
-        constants$8.clang_getEnumDeclIntegerType$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clang_parseTranslationUnit2",
+        constants$8.const$2
     );
-    static final FunctionDescriptor clang_getEnumConstantDeclValue$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle clang_getEnumConstantDeclValue$MH = RuntimeHelper.downcallHandle(
-        "clang_getEnumConstantDeclValue",
-        constants$8.clang_getEnumConstantDeclValue$FUNC
-    );
-    static final FunctionDescriptor clang_getEnumConstantDeclUnsignedValue$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_getEnumConstantDeclUnsignedValue$MH = RuntimeHelper.downcallHandle(
-        "clang_getEnumConstantDeclUnsignedValue",
-        constants$8.clang_getEnumConstantDeclUnsignedValue$FUNC
-    );
-    static final FunctionDescriptor clang_getFieldDeclBitWidth$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_getFieldDeclBitWidth$MH = RuntimeHelper.downcallHandle(
-        "clang_getFieldDeclBitWidth",
-        constants$8.clang_getFieldDeclBitWidth$FUNC
-    );
-    static final FunctionDescriptor clang_Cursor_getNumArguments$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_Cursor_getNumArguments$MH = RuntimeHelper.downcallHandle(
-        "clang_Cursor_getNumArguments",
-        constants$8.clang_Cursor_getNumArguments$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "clang_saveTranslationUnit",
+        constants$8.const$4
     );
 }
 

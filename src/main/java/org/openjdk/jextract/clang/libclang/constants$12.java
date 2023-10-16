@@ -36,87 +36,39 @@ final class constants$12 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$12() {}
-    static final FunctionDescriptor clang_getNumElements$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "clang_getCursorLinkage",
+        constants$10.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_getCursorLanguage",
+        constants$10.const$4
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            MemoryLayout.paddingLayout(4),
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+            JAVA_INT.withName("kind"),
+            JAVA_INT.withName("xdata"),
+            MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXCursor")
     );
-    static final MethodHandle clang_getNumElements$MH = RuntimeHelper.downcallHandle(
-        "clang_getNumElements",
-        constants$12.clang_getNumElements$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clang_Cursor_getTranslationUnit",
+        constants$12.const$2
     );
-    static final FunctionDescriptor clang_getArrayElementType$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("kind"),
-        MemoryLayout.paddingLayout(4),
-        MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-    ),
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
+        JAVA_INT.withName("int_data"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("CXSourceLocation"),
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            MemoryLayout.paddingLayout(4),
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+            JAVA_INT.withName("kind"),
+            JAVA_INT.withName("xdata"),
+            MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXCursor")
     );
-    static final MethodHandle clang_getArrayElementType$MH = RuntimeHelper.downcallHandle(
-        "clang_getArrayElementType",
-        constants$12.clang_getArrayElementType$FUNC
-    );
-    static final FunctionDescriptor clang_getArraySize$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            MemoryLayout.paddingLayout(4),
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_getArraySize$MH = RuntimeHelper.downcallHandle(
-        "clang_getArraySize",
-        constants$12.clang_getArraySize$FUNC
-    );
-    static final FunctionDescriptor clang_Type_getSizeOf$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            MemoryLayout.paddingLayout(4),
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_Type_getSizeOf$MH = RuntimeHelper.downcallHandle(
-        "clang_Type_getSizeOf",
-        constants$12.clang_Type_getSizeOf$FUNC
-    );
-    static final FunctionDescriptor clang_Type_getAlignOf$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-            MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("kind"),
-                    MemoryLayout.paddingLayout(4),
-                    MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-            )
-    );
-    static final MethodHandle clang_Type_getAlignOf$MH = RuntimeHelper.downcallHandle(
-            "clang_Type_getAlignOf",
-            constants$12.clang_Type_getAlignOf$FUNC
-    );
-    static final FunctionDescriptor clang_Type_getOffsetOf$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            MemoryLayout.paddingLayout(4),
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("data")
-        ),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_Type_getOffsetOf$MH = RuntimeHelper.downcallHandle(
-        "clang_Type_getOffsetOf",
-        constants$12.clang_Type_getOffsetOf$FUNC
-    );
-    static final FunctionDescriptor clang_Cursor_isAnonymous$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_Cursor_isAnonymous$MH = RuntimeHelper.downcallHandle(
-        "clang_Cursor_isAnonymous",
-        constants$12.clang_Cursor_isAnonymous$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "clang_getCursorLocation",
+        constants$12.const$4
     );
 }
 

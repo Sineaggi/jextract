@@ -71,6 +71,7 @@ public enum TypeKind {
     UShortAccum(CXType_UShortAccum()),
     UAccum(CXType_UAccum()),
     ULongAccum(CXType_ULongAccum()),
+    BFloat16(CXType_BFloat16()),
     Complex(CXType_Complex()),
     Pointer(CXType_Pointer()),
     BlockPointer(CXType_BlockPointer()),

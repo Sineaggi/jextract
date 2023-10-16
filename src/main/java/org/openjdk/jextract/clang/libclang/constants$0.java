@@ -36,62 +36,38 @@ final class constants$0 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$0() {}
-    static final FunctionDescriptor clang_getCString$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         MemoryLayout.structLayout(
-            Constants$root.C_POINTER$LAYOUT.withName("data"),
-            Constants$root.C_INT$LAYOUT.withName("private_flags"),
+            RuntimeHelper.POINTER.withName("data"),
+            JAVA_INT.withName("private_flags"),
             MemoryLayout.paddingLayout(4)
-        )
+        ).withName("CXString")
     );
-    static final MethodHandle clang_getCString$MH = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "clang_getCString",
-        constants$0.clang_getCString$FUNC
+        constants$0.const$0
     );
-    static final FunctionDescriptor clang_disposeString$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
         MemoryLayout.structLayout(
-            Constants$root.C_POINTER$LAYOUT.withName("data"),
-            Constants$root.C_INT$LAYOUT.withName("private_flags"),
+            RuntimeHelper.POINTER.withName("data"),
+            JAVA_INT.withName("private_flags"),
             MemoryLayout.paddingLayout(4)
-        )
+        ).withName("CXString")
     );
-    static final MethodHandle clang_disposeString$MH = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
         "clang_disposeString",
-        constants$0.clang_disposeString$FUNC
+        constants$0.const$2
     );
-    static final FunctionDescriptor clang_createIndex$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle clang_createIndex$MH = RuntimeHelper.downcallHandle(
-        "clang_createIndex",
-        constants$0.clang_createIndex$FUNC
-    );
-    static final FunctionDescriptor clang_disposeIndex$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_disposeIndex$MH = RuntimeHelper.downcallHandle(
-        "clang_disposeIndex",
-        constants$0.clang_disposeIndex$FUNC
-    );
-    static final FunctionDescriptor clang_getFileName$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("data"),
-        Constants$root.C_INT$LAYOUT.withName("private_flags"),
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("data"),
+        JAVA_INT.withName("private_flags"),
         MemoryLayout.paddingLayout(4)
-    ),
-        Constants$root.C_POINTER$LAYOUT
+    ).withName("CXString"),
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle clang_getFileName$MH = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
         "clang_getFileName",
-        constants$0.clang_getFileName$FUNC
-    );
-    static final FunctionDescriptor clang_getNullLocation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("ptr_data"),
-        Constants$root.C_INT$LAYOUT.withName("int_data"),
-        MemoryLayout.paddingLayout(4)
-    ));
-    static final MethodHandle clang_getNullLocation$MH = RuntimeHelper.downcallHandle(
-        "clang_getNullLocation",
-        constants$0.clang_getNullLocation$FUNC
+        constants$0.const$4
     );
 }
 

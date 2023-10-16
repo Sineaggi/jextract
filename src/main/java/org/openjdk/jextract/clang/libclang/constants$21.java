@@ -32,39 +32,40 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$3 {
+final class constants$21 {
 
     // Suppresses default constructor, ensuring non-instantiability.
-    private constants$3() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "clang_getFileLocation",
-        constants$2.const$3
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
-        JAVA_INT.withName("int_data"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("CXSourceLocation"),
+    private constants$21() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
-            JAVA_INT.withName("begin_int_data"),
-            JAVA_INT.withName("end_int_data")
-        ).withName("CXSourceRange")
+            JAVA_INT.withName("kind"),
+            JAVA_INT.withName("xdata"),
+            MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXCursor"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("kind"),
+            JAVA_INT.withName("xdata"),
+            MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXCursor"),
+        RuntimeHelper.POINTER
     );
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(CXCursorVisitor.class, "apply", constants$21.const$0);
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "clang_getRangeStart",
-        constants$3.const$1
+        constants$21.const$0
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "clang_getRangeEnd",
-        constants$3.const$1
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(clang_visitChildren$visitor.class, "apply", constants$21.const$0);
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("kind"),
+            JAVA_INT.withName("xdata"),
+            MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXCursor"),
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "clang_getChildDiagnostics",
-        constants$3.const$4
+        "clang_visitChildren",
+        constants$21.const$4
     );
 }
 

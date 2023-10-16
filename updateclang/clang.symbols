@@ -404,6 +404,7 @@
 --include-constant CXType_Attributed
 --include-constant CXType_Auto
 --include-constant CXType_BlockPointer
+--include-constant CXType_BFloat16
 --include-constant CXType_Bool
 --include-constant CXType_Char16
 --include-constant CXType_Char32
@@ -544,6 +545,7 @@
 --include-function clang_PrintingPolicy_getProperty
 --include-function clang_PrintingPolicy_setProperty
 --include-function clang_Range_isNull
+--include-function clang_Type_getAlignOf
 --include-function clang_Type_getOffsetOf
 --include-function clang_Type_getSizeOf
 --include-function clang_createIndex

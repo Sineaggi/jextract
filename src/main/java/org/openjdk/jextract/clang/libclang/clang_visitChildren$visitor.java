@@ -32,40 +32,27 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$3 {
+/**
+ * {@snippet :
+ * enum CXChildVisitResult (*clang_visitChildren$visitor)(struct CXCursor,struct CXCursor,void*);
+ * }
+ */
+public interface clang_visitChildren$visitor {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$3() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "clang_getFileLocation",
-        constants$2.const$3
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
-        JAVA_INT.withName("int_data"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("CXSourceLocation"),
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
-            JAVA_INT.withName("begin_int_data"),
-            JAVA_INT.withName("end_int_data")
-        ).withName("CXSourceRange")
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "clang_getRangeStart",
-        constants$3.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "clang_getRangeEnd",
-        constants$3.const$1
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "clang_getChildDiagnostics",
-        constants$3.const$4
-    );
+    int apply(java.lang.foreign.MemorySegment cursor, java.lang.foreign.MemorySegment parent, java.lang.foreign.MemorySegment client_data);
+    static MemorySegment allocate(clang_visitChildren$visitor fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$21.const$3, fi, constants$21.const$0, scope);
+    }
+    static clang_visitChildren$visitor ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (java.lang.foreign.MemorySegment _cursor, java.lang.foreign.MemorySegment _parent, java.lang.foreign.MemorySegment _client_data) -> {
+            try {
+                return (int)constants$21.const$2.invokeExact(symbol, _cursor, _parent, _client_data);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
+        };
+    }
 }
 
 

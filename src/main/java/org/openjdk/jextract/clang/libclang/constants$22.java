@@ -32,39 +32,45 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$3 {
+final class constants$22 {
 
     // Suppresses default constructor, ensuring non-instantiability.
-    private constants$3() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "clang_getFileLocation",
-        constants$2.const$3
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
-        JAVA_INT.withName("int_data"),
+    private constants$22() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("data"),
+        JAVA_INT.withName("private_flags"),
         MemoryLayout.paddingLayout(4)
-    ).withName("CXSourceLocation"),
+    ).withName("CXString"),
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
-            JAVA_INT.withName("begin_int_data"),
-            JAVA_INT.withName("end_int_data")
-        ).withName("CXSourceRange")
+            JAVA_INT.withName("kind"),
+            JAVA_INT.withName("xdata"),
+            MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXCursor")
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_getCursorUSR",
+        constants$22.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "clang_getRangeStart",
-        constants$3.const$1
+        "clang_getCursorSpelling",
+        constants$22.const$0
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "clang_getRangeEnd",
-        constants$3.const$1
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "clang_PrintingPolicy_getProperty",
+        constants$22.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "clang_getChildDiagnostics",
-        constants$3.const$4
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "clang_PrintingPolicy_setProperty",
+        constants$22.const$5
     );
 }
 

@@ -36,71 +36,32 @@ final class constants$14 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$14() {}
-    static final FunctionDescriptor clang_getCursorSpelling$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("data"),
-        Constants$root.C_INT$LAYOUT.withName("private_flags"),
-        MemoryLayout.paddingLayout(4)
-    ),
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "clang_getTypedefDeclUnderlyingType",
+        constants$13.const$2
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_getEnumDeclIntegerType",
+        constants$13.const$2
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+            JAVA_INT.withName("kind"),
+            JAVA_INT.withName("xdata"),
+            MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXCursor")
     );
-    static final MethodHandle clang_getCursorSpelling$MH = RuntimeHelper.downcallHandle(
-        "clang_getCursorSpelling",
-        constants$14.clang_getCursorSpelling$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clang_getEnumConstantDeclValue",
+        constants$14.const$2
     );
-    static final FunctionDescriptor clang_PrintingPolicy_getProperty$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "clang_getEnumConstantDeclUnsignedValue",
+        constants$14.const$2
     );
-    static final MethodHandle clang_PrintingPolicy_getProperty$MH = RuntimeHelper.downcallHandle(
-        "clang_PrintingPolicy_getProperty",
-        constants$14.clang_PrintingPolicy_getProperty$FUNC
-    );
-    static final FunctionDescriptor clang_PrintingPolicy_setProperty$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle clang_PrintingPolicy_setProperty$MH = RuntimeHelper.downcallHandle(
-        "clang_PrintingPolicy_setProperty",
-        constants$14.clang_PrintingPolicy_setProperty$FUNC
-    );
-    static final FunctionDescriptor clang_getCursorPrintingPolicy$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_getCursorPrintingPolicy$MH = RuntimeHelper.downcallHandle(
-        "clang_getCursorPrintingPolicy",
-        constants$14.clang_getCursorPrintingPolicy$FUNC
-    );
-    static final FunctionDescriptor clang_PrintingPolicy_dispose$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_PrintingPolicy_dispose$MH = RuntimeHelper.downcallHandle(
-        "clang_PrintingPolicy_dispose",
-        constants$14.clang_PrintingPolicy_dispose$FUNC
-    );
-    static final FunctionDescriptor clang_getCursorPrettyPrinted$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("data"),
-        Constants$root.C_INT$LAYOUT.withName("private_flags"),
-        MemoryLayout.paddingLayout(4)
-    ),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        ),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_getCursorPrettyPrinted$MH = RuntimeHelper.downcallHandle(
-        "clang_getCursorPrettyPrinted",
-        constants$14.clang_getCursorPrettyPrinted$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "clang_Cursor_isBitField",
+        constants$10.const$4
     );
 }
 

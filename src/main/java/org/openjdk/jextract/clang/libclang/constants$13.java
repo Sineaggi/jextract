@@ -36,71 +36,50 @@ final class constants$13 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$13() {}
-    static final FunctionDescriptor clang_Cursor_isAnonymousRecordDecl$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
+        JAVA_INT.withName("begin_int_data"),
+        JAVA_INT.withName("end_int_data")
+    ).withName("CXSourceRange"),
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+            JAVA_INT.withName("kind"),
+            JAVA_INT.withName("xdata"),
+            MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXCursor")
     );
-    static final MethodHandle clang_Cursor_isAnonymousRecordDecl$MH = RuntimeHelper.downcallHandle(
-        "clang_Cursor_isAnonymousRecordDecl",
-        constants$13.clang_Cursor_isAnonymousRecordDecl$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_getCursorExtent",
+        constants$13.const$0
     );
-    static final FunctionDescriptor clang_Cursor_isBitField$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("kind"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("data")
+    ).withName("CXType"),
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+            JAVA_INT.withName("kind"),
+            JAVA_INT.withName("xdata"),
+            MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXCursor")
     );
-    static final MethodHandle clang_Cursor_isBitField$MH = RuntimeHelper.downcallHandle(
-        "clang_Cursor_isBitField",
-        constants$13.clang_Cursor_isBitField$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clang_getCursorType",
+        constants$13.const$2
     );
-    static final FunctionDescriptor CXCursorVisitor$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        ),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        ),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle CXCursorVisitor$MH = RuntimeHelper.downcallHandle(
-        constants$13.CXCursorVisitor$FUNC
-    );
-    static final FunctionDescriptor clang_visitChildren$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        ),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_visitChildren$MH = RuntimeHelper.downcallHandle(
-        "clang_visitChildren",
-        constants$13.clang_visitChildren$FUNC
-    );
-    static final FunctionDescriptor clang_getCursorUSR$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("data"),
-        Constants$root.C_INT$LAYOUT.withName("private_flags"),
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("data"),
+        JAVA_INT.withName("private_flags"),
         MemoryLayout.paddingLayout(4)
-    ),
+    ).withName("CXString"),
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+            JAVA_INT.withName("kind"),
+            MemoryLayout.paddingLayout(4),
+            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXType")
     );
-    static final MethodHandle clang_getCursorUSR$MH = RuntimeHelper.downcallHandle(
-        "clang_getCursorUSR",
-        constants$13.clang_getCursorUSR$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "clang_getTypeSpelling",
+        constants$13.const$4
     );
 }
 

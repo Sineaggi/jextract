@@ -36,57 +36,43 @@ final class constants$17 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$17() {}
-    static final FunctionDescriptor clang_getCursorKindSpelling$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("data"),
-        Constants$root.C_INT$LAYOUT.withName("private_flags"),
-        MemoryLayout.paddingLayout(4)
-    ),
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "clang_isVolatileQualifiedType",
+        constants$16.const$2
     );
-    static final MethodHandle clang_getCursorKindSpelling$MH = RuntimeHelper.downcallHandle(
-        "clang_getCursorKindSpelling",
-        constants$17.clang_getCursorKindSpelling$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_getTypedefName",
+        constants$13.const$4
     );
-    static final FunctionDescriptor clang_getClangVersion$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("data"),
-        Constants$root.C_INT$LAYOUT.withName("private_flags"),
-        MemoryLayout.paddingLayout(4)
-    ));
-    static final MethodHandle clang_getClangVersion$MH = RuntimeHelper.downcallHandle(
-        "clang_getClangVersion",
-        constants$17.clang_getClangVersion$FUNC
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "clang_getPointeeType",
+        constants$16.const$0
     );
-    static final FunctionDescriptor clang_toggleCrashRecovery$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle clang_toggleCrashRecovery$MH = RuntimeHelper.downcallHandle(
-        "clang_toggleCrashRecovery",
-        constants$17.clang_toggleCrashRecovery$FUNC
-    );
-    static final FunctionDescriptor clang_Cursor_Evaluate$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("kind"),
+        JAVA_INT.withName("xdata"),
+        MemoryLayout.sequenceLayout(3, RuntimeHelper.POINTER).withName("data")
+    ).withName("CXCursor"),
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+            JAVA_INT.withName("kind"),
+            MemoryLayout.paddingLayout(4),
+            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXType")
     );
-    static final MethodHandle clang_Cursor_Evaluate$MH = RuntimeHelper.downcallHandle(
-        "clang_Cursor_Evaluate",
-        constants$17.clang_Cursor_Evaluate$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "clang_getTypeDeclaration",
+        constants$17.const$3
     );
-    static final FunctionDescriptor clang_EvalResult_getKind$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("data"),
+        JAVA_INT.withName("private_flags"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("CXString"),
+        JAVA_INT
     );
-    static final MethodHandle clang_EvalResult_getKind$MH = RuntimeHelper.downcallHandle(
-        "clang_EvalResult_getKind",
-        constants$17.clang_EvalResult_getKind$FUNC
-    );
-    static final FunctionDescriptor clang_EvalResult_getAsInt$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_EvalResult_getAsInt$MH = RuntimeHelper.downcallHandle(
-        "clang_EvalResult_getAsInt",
-        constants$17.clang_EvalResult_getAsInt$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "clang_getTypeKindSpelling",
+        constants$17.const$5
     );
 }
 

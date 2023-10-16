@@ -32,39 +32,35 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$3 {
+final class constants$24 {
 
     // Suppresses default constructor, ensuring non-instantiability.
-    private constants$3() {}
+    private constants$24() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "clang_getFileLocation",
-        constants$2.const$3
+        "clang_getCursorDefinition",
+        constants$23.const$5
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
-        JAVA_INT.withName("int_data"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("CXSourceLocation"),
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
-            JAVA_INT.withName("begin_int_data"),
-            JAVA_INT.withName("end_int_data")
-        ).withName("CXSourceRange")
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_isCursorDefinition",
+        constants$10.const$4
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "clang_getRangeStart",
-        constants$3.const$1
+        "clang_Cursor_isVariadic",
+        constants$10.const$4
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "clang_getRangeEnd",
-        constants$3.const$1
+        "clang_Cursor_getMangling",
+        constants$22.const$0
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(4, JAVA_INT).withName("int_data"),
+            RuntimeHelper.POINTER.withName("ptr_data")
+        ).withName("CXToken")
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "clang_getChildDiagnostics",
-        constants$3.const$4
+        "clang_getTokenKind",
+        constants$24.const$4
     );
 }
 

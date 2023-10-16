@@ -36,87 +36,39 @@ final class constants$2 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$2() {}
-    static final FunctionDescriptor clang_getExpansionLocation$FUNC = FunctionDescriptor.ofVoid(
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("ptr_data"),
-            Constants$root.C_INT$LAYOUT.withName("int_data"),
-            MemoryLayout.paddingLayout(4)
-        ),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "clang_Location_isFromMainFile",
+        constants$1.const$4
     );
-    static final MethodHandle clang_getExpansionLocation$MH = RuntimeHelper.downcallHandle(
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
+            JAVA_INT.withName("begin_int_data"),
+            JAVA_INT.withName("end_int_data")
+        ).withName("CXSourceRange")
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "clang_Range_isNull",
+        constants$2.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
+            JAVA_INT.withName("int_data"),
+            MemoryLayout.paddingLayout(4)
+        ).withName("CXSourceLocation"),
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
         "clang_getExpansionLocation",
-        constants$2.clang_getExpansionLocation$FUNC
+        constants$2.const$3
     );
-    static final FunctionDescriptor clang_getSpellingLocation$FUNC = FunctionDescriptor.ofVoid(
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("ptr_data"),
-            Constants$root.C_INT$LAYOUT.withName("int_data"),
-            MemoryLayout.paddingLayout(4)
-        ),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_getSpellingLocation$MH = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
         "clang_getSpellingLocation",
-        constants$2.clang_getSpellingLocation$FUNC
-    );
-    static final FunctionDescriptor clang_getFileLocation$FUNC = FunctionDescriptor.ofVoid(
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("ptr_data"),
-            Constants$root.C_INT$LAYOUT.withName("int_data"),
-            MemoryLayout.paddingLayout(4)
-        ),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_getFileLocation$MH = RuntimeHelper.downcallHandle(
-        "clang_getFileLocation",
-        constants$2.clang_getFileLocation$FUNC
-    );
-    static final FunctionDescriptor clang_getRangeStart$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("ptr_data"),
-        Constants$root.C_INT$LAYOUT.withName("int_data"),
-        MemoryLayout.paddingLayout(4)
-    ),
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("ptr_data"),
-            Constants$root.C_INT$LAYOUT.withName("begin_int_data"),
-            Constants$root.C_INT$LAYOUT.withName("end_int_data")
-        )
-    );
-    static final MethodHandle clang_getRangeStart$MH = RuntimeHelper.downcallHandle(
-        "clang_getRangeStart",
-        constants$2.clang_getRangeStart$FUNC
-    );
-    static final FunctionDescriptor clang_getRangeEnd$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("ptr_data"),
-        Constants$root.C_INT$LAYOUT.withName("int_data"),
-        MemoryLayout.paddingLayout(4)
-    ),
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT).withName("ptr_data"),
-            Constants$root.C_INT$LAYOUT.withName("begin_int_data"),
-            Constants$root.C_INT$LAYOUT.withName("end_int_data")
-        )
-    );
-    static final MethodHandle clang_getRangeEnd$MH = RuntimeHelper.downcallHandle(
-        "clang_getRangeEnd",
-        constants$2.clang_getRangeEnd$FUNC
-    );
-    static final FunctionDescriptor clang_getChildDiagnostics$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_getChildDiagnostics$MH = RuntimeHelper.downcallHandle(
-        "clang_getChildDiagnostics",
-        constants$2.clang_getChildDiagnostics$FUNC
+        constants$2.const$3
     );
 }
 

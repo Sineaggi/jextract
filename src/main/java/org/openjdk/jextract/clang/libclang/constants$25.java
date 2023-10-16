@@ -32,39 +32,54 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$3 {
+final class constants$25 {
 
     // Suppresses default constructor, ensuring non-instantiability.
-    private constants$3() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "clang_getFileLocation",
-        constants$2.const$3
+    private constants$25() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("data"),
+        JAVA_INT.withName("private_flags"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("CXString"),
+        RuntimeHelper.POINTER,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(4, JAVA_INT).withName("int_data"),
+            RuntimeHelper.POINTER.withName("ptr_data")
+        ).withName("CXToken")
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(MemoryLayout.structLayout(
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_getTokenSpelling",
+        constants$25.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(MemoryLayout.structLayout(
         MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
         JAVA_INT.withName("int_data"),
         MemoryLayout.paddingLayout(4)
     ).withName("CXSourceLocation"),
+        RuntimeHelper.POINTER,
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
-            JAVA_INT.withName("begin_int_data"),
-            JAVA_INT.withName("end_int_data")
-        ).withName("CXSourceRange")
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "clang_getRangeStart",
-        constants$3.const$1
+            MemoryLayout.sequenceLayout(4, JAVA_INT).withName("int_data"),
+            RuntimeHelper.POINTER.withName("ptr_data")
+        ).withName("CXToken")
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "clang_getRangeEnd",
-        constants$3.const$1
+        "clang_getTokenLocation",
+        constants$25.const$2
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
+        JAVA_INT.withName("begin_int_data"),
+        JAVA_INT.withName("end_int_data")
+    ).withName("CXSourceRange"),
+        RuntimeHelper.POINTER,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(4, JAVA_INT).withName("int_data"),
+            RuntimeHelper.POINTER.withName("ptr_data")
+        ).withName("CXToken")
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "clang_getChildDiagnostics",
-        constants$3.const$4
+        "clang_getTokenExtent",
+        constants$25.const$4
     );
 }
 

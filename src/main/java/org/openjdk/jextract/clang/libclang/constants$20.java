@@ -32,39 +32,37 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$3 {
+final class constants$20 {
 
     // Suppresses default constructor, ensuring non-instantiability.
-    private constants$3() {}
+    private constants$20() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "clang_getFileLocation",
-        constants$2.const$3
+        "clang_Type_getAlignOf",
+        constants$19.const$2
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
-        JAVA_INT.withName("int_data"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("CXSourceLocation"),
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_Type_getSizeOf",
+        constants$19.const$2
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
-            JAVA_INT.withName("begin_int_data"),
-            JAVA_INT.withName("end_int_data")
-        ).withName("CXSourceRange")
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "clang_getRangeStart",
-        constants$3.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "clang_getRangeEnd",
-        constants$3.const$1
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+            JAVA_INT.withName("kind"),
+            MemoryLayout.paddingLayout(4),
+            MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("data")
+        ).withName("CXType"),
         RuntimeHelper.POINTER
     );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clang_Type_getOffsetOf",
+        constants$20.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "clang_Cursor_isAnonymous",
+        constants$10.const$4
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "clang_getChildDiagnostics",
-        constants$3.const$4
+        "clang_Cursor_isAnonymousRecordDecl",
+        constants$10.const$4
     );
 }
 

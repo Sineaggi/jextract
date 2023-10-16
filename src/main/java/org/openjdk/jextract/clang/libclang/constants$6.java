@@ -36,55 +36,20 @@ final class constants$6 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$6() {}
-    static final FunctionDescriptor clang_getCursorKind$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
+    static final VarHandle const$0 = constants$5.const$5.varHandle(MemoryLayout.PathElement.groupElement("Filename"));
+    static final VarHandle const$1 = constants$5.const$5.varHandle(MemoryLayout.PathElement.groupElement("Contents"));
+    static final VarHandle const$2 = constants$5.const$5.varHandle(MemoryLayout.PathElement.groupElement("Length"));
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final MethodHandle clang_getCursorKind$MH = RuntimeHelper.downcallHandle(
-        "clang_getCursorKind",
-        constants$6.clang_getCursorKind$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "clang_createIndex",
+        constants$6.const$3
     );
-    static final FunctionDescriptor clang_isDeclaration$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle clang_isDeclaration$MH = RuntimeHelper.downcallHandle(
-        "clang_isDeclaration",
-        constants$6.clang_isDeclaration$FUNC
-    );
-    static final FunctionDescriptor clang_isAttribute$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle clang_isAttribute$MH = RuntimeHelper.downcallHandle(
-        "clang_isAttribute",
-        constants$6.clang_isAttribute$FUNC
-    );
-    static final FunctionDescriptor clang_isInvalid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle clang_isInvalid$MH = RuntimeHelper.downcallHandle(
-        "clang_isInvalid",
-        constants$6.clang_isInvalid$FUNC
-    );
-    static final FunctionDescriptor clang_isPreprocessing$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle clang_isPreprocessing$MH = RuntimeHelper.downcallHandle(
-        "clang_isPreprocessing",
-        constants$6.clang_isPreprocessing$FUNC
-    );
-    static final FunctionDescriptor clang_getCursorLinkage$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_getCursorLinkage$MH = RuntimeHelper.downcallHandle(
-        "clang_getCursorLinkage",
-        constants$6.clang_getCursorLinkage$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "clang_disposeIndex",
+        constants$4.const$0
     );
 }
 

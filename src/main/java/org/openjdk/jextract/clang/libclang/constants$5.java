@@ -36,70 +36,33 @@ final class constants$5 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$5() {}
-    static final FunctionDescriptor clang_defaultReparseOptions$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle clang_defaultReparseOptions$MH = RuntimeHelper.downcallHandle(
-        "clang_defaultReparseOptions",
-        constants$5.clang_defaultReparseOptions$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clang_getDiagnosticSeverity",
+        constants$5.const$0
     );
-    static final FunctionDescriptor clang_reparseTranslationUnit$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER).withName("ptr_data"),
+        JAVA_INT.withName("int_data"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("CXSourceLocation"),
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle clang_reparseTranslationUnit$MH = RuntimeHelper.downcallHandle(
-        "clang_reparseTranslationUnit",
-        constants$5.clang_reparseTranslationUnit$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clang_getDiagnosticLocation",
+        constants$5.const$2
     );
-    static final FunctionDescriptor clang_getNullCursor$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("kind"),
-        Constants$root.C_INT$LAYOUT.withName("xdata"),
-        MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-    ));
-    static final MethodHandle clang_getNullCursor$MH = RuntimeHelper.downcallHandle(
-        "clang_getNullCursor",
-        constants$5.clang_getNullCursor$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "clang_getDiagnosticSpelling",
+        constants$0.const$4
     );
-    static final FunctionDescriptor clang_getTranslationUnitCursor$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("kind"),
-        Constants$root.C_INT$LAYOUT.withName("xdata"),
-        MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-    ),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clang_getTranslationUnitCursor$MH = RuntimeHelper.downcallHandle(
-        "clang_getTranslationUnitCursor",
-        constants$5.clang_getTranslationUnitCursor$FUNC
-    );
-    static final FunctionDescriptor clang_equalCursors$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        ),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_equalCursors$MH = RuntimeHelper.downcallHandle(
-        "clang_equalCursors",
-        constants$5.clang_equalCursors$FUNC
-    );
-    static final FunctionDescriptor clang_Cursor_isNull$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("kind"),
-            Constants$root.C_INT$LAYOUT.withName("xdata"),
-            MemoryLayout.sequenceLayout(3, Constants$root.C_POINTER$LAYOUT).withName("data")
-        )
-    );
-    static final MethodHandle clang_Cursor_isNull$MH = RuntimeHelper.downcallHandle(
-        "clang_Cursor_isNull",
-        constants$5.clang_Cursor_isNull$FUNC
-    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("Filename"),
+        RuntimeHelper.POINTER.withName("Contents"),
+        JAVA_LONG.withName("Length")
+    ).withName("CXUnsavedFile");
 }
 
 
