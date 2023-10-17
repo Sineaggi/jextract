@@ -170,6 +170,9 @@ class TypeMaker {
             case Elaborated:
                 org.openjdk.jextract.clang.Type canonical = t.canonicalType();
                 if (canonical.equalType(t)) {
+                    if (t.spelling().equals("__bf16")) { //unsupported
+                        return Type.primitive(Primitive.Kind.BFloat16);
+                    }
                     throw new TypeException("Unknown type with same canonical type: " + t.spelling());
                 }
                 return makeType(canonical);

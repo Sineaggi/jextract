@@ -43,6 +43,7 @@ public final class UnsupportedLayouts {
     public static final MemoryLayout _FLOAT128 = makeUnsupportedLayout(16, "_float128");
 
     public static final MemoryLayout __FP16 = makeUnsupportedLayout(2, "__fp16");
+    public static final MemoryLayout __BF16 = makeUnsupportedLayout(2, "__bf16");
 
     public static final MemoryLayout CHAR16 = makeUnsupportedLayout(2, "char16");
 

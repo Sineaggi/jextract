@@ -149,6 +149,11 @@ public interface Type {
              */
             HalfFloat("__fp16", UnsupportedLayouts.__FP16),
             /**
+             * {@code bfloat16} type.
+             */
+            BFloat16("__bf16", UnsupportedLayouts.__BF16),
+
+            /**
              * {@code wchar} type.
              */
             WChar("wchar_t", UnsupportedLayouts.WCHAR_T);
