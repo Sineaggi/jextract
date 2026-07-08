@@ -63,6 +63,7 @@ repositories {
 compileJava {
     options.release = 23
     options.fork = true
+    options.javaModuleMainClass = "org.openjdk.jextract.JextractTool"
     options.forkOptions.executable = "${jdk_home}/bin/javac${os_exe_suffix}"
 }
 
