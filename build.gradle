@@ -283,15 +283,15 @@ tasks.register("coverage", JavaExec) {
 // Task to generate version file into jmod inputs
 //------------------------------------------------------------
 tasks.register('writeLibClangVersion') {
-    def confDir = file("$buildDir/jmod_inputs/conf/jextract")
-    outputs.file("$confDir/libclang.version")
+    def confFile = layout.buildDirectory.file("jmod_inputs/conf/jextract/libclang.version")
+    outputs.file(confFile)
     def clang_major_version = clang_version.tokenize('.')[0]
+    inputs.property("clangVersion", clang_major_version)
     doLast {
-        confDir.mkdirs()
-        confDir.toPath().resolve("libclang.version").text = clang_major_version + "\n"
+        confFile.get().asFile.toPath().text = clang_major_version
     }
 }
 
 tasks.named("createJextractJmod") {
-    dependsOn "writeLibClangVersion"
+    inputs.file(tasks.named("writeLibClangVersion").map { it.outputs.files.singleFile })
 }
