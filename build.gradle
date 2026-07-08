@@ -289,7 +289,7 @@ tasks.register('writeLibClangVersion') {
     def clang_major_version = clang_version.tokenize('.')[0]
     doLast {
         confDir.mkdirs()
-        file("$confDir/libclang.version").text = clang_major_version + "\n"
+        confDir.toPath().resolve("libclang.version").text = clang_major_version + "\n"
     }
 }
 
